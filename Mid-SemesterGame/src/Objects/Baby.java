@@ -5,30 +5,34 @@
  */
 package Objects;
 
+import java.awt.Rectangle;
+
 /**
  *
  * @author Zack
  */
-public class Baby {
+public class Baby extends Rectangle{
     private int dy = 0;
-    private int xLocation = 0;
-    private int yLocation = 0;
+   
     public Baby(int x, int y)
     {
-        xLocation = x;
-        yLocation = y;
+        super.setLocation(x, y);
     }
-    public int getCurrentX()
+    public double getCurrentX()
     {
-        return xLocation;
+        return super.getX();
     }
-    public int getCurrentY()
+    public double getCurrentY()
     {
-        return yLocation;
+        return super.getY();
     }
     public void move()
     {
         
+    }
+    public void drawImage()
+    {
+       
     }
     
     
