@@ -27,7 +27,7 @@ public class Skydiver extends Rectangle{
     }
     public void updateAndDraw(Graphics g) {
         // Update
-        this.update();
+        //this.update();
         
         // Draw
         
@@ -39,12 +39,33 @@ public class Skydiver extends Rectangle{
         //this.move();
     }
     
+   //below are two seperate methods to move left or right 
+    private void moveLeft(boolean moveLeft){
+        if (moveLeft) {
+            this.x -= skydiverSpeed;
+            if(this.x <= 0) {
+                //add code to make the block not move past the bounds
+            }
+        }
+        
+        
+    }
+    private void moveRight(boolean moveRight){
+        if(moveRight) {
+            this.x += skydiverSpeed;
+            if(this.x >= size.width - skydiverSize) {
+                this.x = x;
+            }
+        }
+    }
     
+    
+    //below is one mothod that can handle both, they do the same thing but 
     private void move(boolean moveRight, boolean moveLeft) {
         if(moveRight) {
             this.x += skydiverSpeed;
             if(this.x >= size.width - skydiverSize) {
-                //add code to make the block stay still
+                this.x = x;
             }
         } 
         else if (moveLeft) {
