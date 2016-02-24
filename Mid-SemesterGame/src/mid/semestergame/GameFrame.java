@@ -14,19 +14,19 @@ import javax.swing.JPanel;
  * @author Graham
  */
 public class GameFrame extends JFrame{
-    private final JPanel panel;
+    private final GamePanel panel;
 
-    public GameFrame(String title, JPanel panel) {
+    public GameFrame(String title, GamePanel panel) {
         
-        //Set properties
+   
         this.setTitle(title);
-        this.setSize(new Dimension(600, 600));
+        this.setSize(new Dimension(500, 500));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
-        // Add the panel
         this.panel = panel;
         this.getContentPane().add(this.panel);
+        setVisible(true);
     }
    
 }
