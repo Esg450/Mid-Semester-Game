@@ -26,11 +26,12 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
     private int playerScore;
     private boolean gameOver;
     private int highScore;
+    static int timerCount;
     
     GamePanel(){
         this.addKeyListener(this);
         player1 = new Skydiver(500,500, this);
-        
+        timerCount =0;
         obstacles = new ArrayList <>();
         playerScore = 0;
         gameOver =false;
@@ -75,6 +76,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
         
         if(o== timer1){
             this.repaint();
+            this.timerCount++;
         }
         else if( o == timerObstacle){
             obstacles.add(new Obstacle(500,500, this));
@@ -93,8 +95,20 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
     public void keyReleased(KeyEvent e){
         player1.keyReleased(e);
     }
-    public int calculateHighScore(){
+    public int getHighScore(){
         return highScore;
+    }
+    
+    public double calculateHighScore(ActionEvent e){
+        Object o = e.getSource();
+        if(o== timer1){
+            this.highScore++;
+        }
+        return this.highScore;
+    }
+    
+    public static int getTimerCount(){
+        return GamePanel.timerCount;
     }
     
 }

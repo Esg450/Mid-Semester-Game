@@ -8,6 +8,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import mid.semestergame.*;
 /**
@@ -23,7 +24,7 @@ public class Obstacle extends Rectangle {
     private GamePanel panel1;
     
     public Obstacle(int panelHeight, int panelWidth, GamePanel panel1) {
-        
+        this.obstacleImage = new ImageIcon("src/Images/plane2.png").getImage();
         this.panel1 = panel1;
         this.size = new Dimension(panelWidth, panelHeight);
         this.obstacleSize = 50;
@@ -42,7 +43,7 @@ public class Obstacle extends Rectangle {
     public void paintComponent(Graphics g){
        move();
         g.setColor(Color.black);
-        g.fillRect(this.x, this.y, this.width, this.height);
+        g.drawImage(obstacleImage,this.x, this.y, this.width, this.height,panel1);
     }
     
     public double getCurrentX() {
@@ -53,9 +54,7 @@ public class Obstacle extends Rectangle {
         return super.getY();
     }
     
-    public void drawImage(Graphics g) {
-    }
-    
+  
     public void move() {
         this.y-=10;
         

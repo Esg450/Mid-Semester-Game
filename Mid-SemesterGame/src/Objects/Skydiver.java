@@ -32,7 +32,6 @@ public class Skydiver extends Rectangle{
         
     }
 
-    
     private void move() {
         if(this.x >=size.width - skydiverSize) 
         {
