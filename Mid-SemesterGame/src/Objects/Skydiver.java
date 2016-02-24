@@ -1,7 +1,10 @@
 package Objects;
 
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
+import javax.swing.JPanel;
 
 /**
  *
@@ -9,31 +12,63 @@ import java.awt.Rectangle;
  */
 public class Skydiver extends Rectangle{
     private int dx;
-    private int currentX;
-    private int y;
+    private final Dimension size;
     private Image skydiverImage;
-    
-    public Skydiver(int x){
-        currentX = x;
-        y = 0;
+    private final int skydiverSize;
+    private final int skydiverSpeed;
+    public Skydiver(JPanel thePanel){
+        this.size = new Dimension(thePanel.getWidth(), thePanel.getHeight());
+        this.skydiverSize = 50;
+        this.skydiverSpeed = 10;
+        this.setBounds(size.height - skydiverSize, skydiverSize, skydiverSize, skydiverSize);
         
+        
+        
+    }
+    public void updateAndDraw(Graphics g) {
+        // Update
+        this.update();
+        
+        // Draw
+        
+        g.fillRect(this.x, this.y, this.width, this.height);
+    }
+    
+    
+    public void update() {
+        //this.move();
+    }
+    
+    
+    private void move(boolean moveRight, boolean moveLeft) {
+        if(moveRight) {
+            this.x += skydiverSpeed;
+            if(this.x >= size.width - skydiverSize) {
+                //add code to make the block stay still
+            }
+        } 
+        else if (moveLeft) {
+            this.x -= skydiverSpeed;
+            if(this.x <= 0) {
+                //add code to make the block not move past the bounds
+            }
+        }
     }
     
     public int getCurrnetX(){
-        return this.currentX;
+        return x;
     }
     
     public int getCurrnetY(){
-        return this.y;
+        return y;
     }
     
     public void sexPosX(int changeInX){
-        this.dx = changeInX;
-        this.x = this.x + this.dx;
+        
     }
     
     public void sexPosY(int changeInY){
-        this.y = this.y + changeInY;
+        
     }
     
     
