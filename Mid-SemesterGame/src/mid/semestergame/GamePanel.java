@@ -20,26 +20,31 @@ import java.util.ArrayList;
 public class GamePanel extends JPanel implements ActionListener,KeyListener {
     private Timer timer1;
     private Skydiver player1;
-    private ArrayList <Obstacle> obstacles;
-    private ArrayList<Baby> babies;
+    //private ArrayList <Obstacle> obstacles;
+    //private ArrayList<Baby> babies;
     private int playerScore;
     private boolean gameOver;
     
     GamePanel(){
-        player1 = new Skydiver();
-        obstacles = new ArrayList <>();
+        this.addKeyListener(this);
+        player1 = new Skydiver(500,500, this);
+        //obstacles = new ArrayList <>();
         playerScore = 0;
         gameOver =false;
         timer1 = new Timer(50, this);
         timer1.start();
+        setFocusable(true);
     }
     
     public void paintComponent(Graphics g){
        super.paintComponent(g);
        
        g.clearRect(0, 0, this.getWidth(), this.getHeight());
+       player1.paintComponenet(g);
        
-       for(int i = 0; i<obstacles.size(); i++){
+       
+       
+       /*for(int i = 0; i<obstacles.size(); i++){
            if(player1.intersects(obstacles.get(i))){
                timer1.stop();
            }
@@ -47,12 +52,16 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
        for(int i = 0; i<babies.size(); i++){
            timer1.stop();
        }
-       
+       */
        
     }
         
     public void actionPerformed(ActionEvent e){
+        Object o = e.getSource();
         
+        if(o== timer1){
+            this.repaint();
+        }
     }
     
     public void keyTyped(KeyEvent e){
@@ -60,11 +69,11 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
     }
     
     public void keyPressed (KeyEvent e){
-        
+        player1.keyPressed(e);
     }
     
     public void keyReleased(KeyEvent e){
-        
+        player1.keyReleased(e);
     }
     
 }
