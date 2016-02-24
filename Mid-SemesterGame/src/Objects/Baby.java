@@ -21,6 +21,7 @@ public class Baby extends Rectangle{
     private int size = 10;
     private boolean dirUp = true;
     private ImageIcon image = new ImageIcon();
+    
    
     public Baby(int x, int y)
     {
@@ -64,9 +65,9 @@ public class Baby extends Rectangle{
         Random r = new Random();
         int randNum = r.nextInt(3);
         ArrayList<String> babyPics = new ArrayList<String>();
-        babyPics.add("babyPic1.jpg");
-        babyPics.add("babyPic2.jpg");
-        babyPics.add("babyPic3.jpg");
+        babyPics.add("babyPic1.png");
+        babyPics.add("babyPic2.png");
+        babyPics.add("babyPic3.png");
         String randomImageFile = babyPics.get(randNum);
         ImageIcon randomImage = new ImageIcon("src/images/"+randomImageFile);
         return randomImage;
