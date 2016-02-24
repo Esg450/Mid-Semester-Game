@@ -20,6 +20,7 @@ public class Skydiver extends Rectangle{
     private final int skydiverSize;
     private final int skydiverSpeed;
     private GamePanel panel1;
+   
     public Skydiver(int panelWidth, int panelHeight, GamePanel thePanel){
         this.panel1 = thePanel;
         this.size = new Dimension(panelWidth, panelHeight);
