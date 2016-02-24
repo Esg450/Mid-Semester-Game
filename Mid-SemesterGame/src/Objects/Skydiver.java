@@ -6,9 +6,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import mid.semestergame.*;
 
@@ -25,14 +22,11 @@ public class Skydiver extends Rectangle{
     private GamePanel panel1;
    
     public Skydiver(int panelWidth, int panelHeight, GamePanel thePanel){
-        this.skydiverImage = new ImageIcon("src/Images/babyPic1.png").getImage();
         this.panel1 = thePanel;
         this.size = new Dimension(panelWidth, panelHeight);
         this.skydiverSize = 50;
         this.skydiverSpeed = 10;
-        
         this.setBounds(0, size.height-8*skydiverSize, skydiverSize, skydiverSize);
-        
         
         
         
@@ -79,8 +73,8 @@ public class Skydiver extends Rectangle{
     public void paintComponenet(Graphics g){
         
         move();
-        g.drawImage(skydiverImage, x, y, width, height, panel1);
-        //g.fillRect(this.x, this.y, this.width, this.height);
+        g.setColor(Color.red);
+        g.fillRect(this.x, this.y, this.width, this.height);
     }
  
 }
