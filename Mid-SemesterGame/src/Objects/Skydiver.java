@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
+import mid.semestergame.*;
 
 /**
  *
@@ -18,29 +19,39 @@ public class Skydiver extends Rectangle{
     private Image skydiverImage;
     private final int skydiverSize;
     private final int skydiverSpeed;
-    public Skydiver(JPanel thePanel){
-        this.size = new Dimension(thePanel.getWidth(), thePanel.getHeight());
+    private GamePanel panel1;
+    public Skydiver(int panelWidth, int panelHeight, GamePanel thePanel){
+        this.panel1 = thePanel;
+        this.size = new Dimension(panelWidth, panelHeight);
         this.skydiverSize = 50;
         this.skydiverSpeed = 10;
-        this.setBounds(size.height - skydiverSize, skydiverSize, skydiverSize, skydiverSize);
+        this.setBounds(0, size.height-8*skydiverSize, skydiverSize, skydiverSize);
         
         
         
     }
 
-    //below is one mothod that can handle both, they do the same thing but 
+    
     private void move() {
-        if(this.x >= size.width - skydiverSize) 
+        if(this.x >=size.width - skydiverSize) 
         {
+            
             this.x += 0;
+            this.x--;
         }
-        else if(this.x <= size.width + skydiverSize)
-        {
-              this.x -= 0;  
-        }else
-        {
-            this.x += dx;
+        
+        else if(x<0){
+            
+            this.x+=0;
+            this.x++;
         }
+        
+        else{
+            this.x+=dx;
+        }
+        
+      
+        //this.x+=dx;
     }
     
     
@@ -65,24 +76,5 @@ public class Skydiver extends Rectangle{
         g.setColor(Color.red);
         g.fillRect(this.x, this.y, this.width, this.height);
     }
-    
-    public int getCurrnetX(){
-        return x;
-    }
-    
-    public int getCurrnetY(){
-        return y;
-    }
-    
-    public void sexPosX(int changeInX){
-        
-    }
-    
-    public void sexPosY(int changeInY){
-        
-    }
-    
-    
-    
-    
+ 
 }
