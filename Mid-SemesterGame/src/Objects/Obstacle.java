@@ -9,16 +9,9 @@ import java.awt.Rectangle;
 public class Obstacle extends Rectangle {
     private int dy;
     
-    public Obstacle() {
+    public Obstacle(int x, int y) {
         dy = 0;
-    }
-    
-    public void setXPos(int i) {
-        this.x = i;
-    } 
-    
-    public void setYPos(int i) {
-        this.y = i;
+        super.setLocation(x, y);
     }
     
     //Not yet implemented
@@ -26,16 +19,15 @@ public class Obstacle extends Rectangle {
         
     }
     
-    public int getCurrentX() {
-        return this.x;
+    public double getCurrentX() {
+        return super.getX();
     }
     
-    public int getCurrrentY() {
-        return this.y;
+    public double getCurrrentY() {
+        return super.getY();
     }
     
     public void drawImage(Graphics g) {
-        
     }
     
     public void move() {
