@@ -1,9 +1,11 @@
 package Objects;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
 
 /**
@@ -25,55 +27,43 @@ public class Skydiver extends Rectangle{
         
         
     }
-    public void updateAndDraw(Graphics g) {
-        // Update
-        //this.update();
-        
-        // Draw
-        
-        g.fillRect(this.x, this.y, this.width, this.height);
-    }
-    
-    
-    public void update() {
-        //this.move();
-    }
-    
-   //below are two seperate methods to move left or right 
-    private void moveLeft(boolean moveLeft){
-        if (moveLeft) {
-            this.x -= skydiverSpeed;
-            if(this.x <= 0) {
-                //add code to make the block not move past the bounds
-            }
-        }
-        
-        
-    }
-    private void moveRight(boolean moveRight){
-        if(moveRight) {
-            this.x += skydiverSpeed;
-            if(this.x >= size.width - skydiverSize) {
-                this.x = x;
-            }
-        }
-    }
-    
-    
+
     //below is one mothod that can handle both, they do the same thing but 
-    private void move(boolean moveRight, boolean moveLeft) {
-        if(moveRight) {
-            this.x += skydiverSpeed;
-            if(this.x >= size.width - skydiverSize) {
-                this.x = x;
-            }
-        } 
-        else if (moveLeft) {
-            this.x -= skydiverSpeed;
-            if(this.x <= 0) {
-                //add code to make the block not move past the bounds
-            }
+    private void move() {
+        if(this.x >= size.width - skydiverSize) 
+        {
+            this.x += 0;
         }
+        else if(this.x <= size.width + skydiverSize)
+        {
+              this.x -= 0;  
+        }else
+        {
+            this.x += dx;
+        }
+    }
+    
+    
+    public void keyPressed(KeyEvent e){
+        if(e.getKeyCode() == KeyEvent.VK_LEFT)
+        {
+            this.dx = -50;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_RIGHT)
+        {
+            this.dx = 50;
+        }
+    }
+    
+    public void keyReleased(KeyEvent e){
+        this.dx = 0;
+    }
+    
+    public void paintComponenet(Graphics g){
+        
+        move();
+        g.setColor(Color.red);
+        g.fillRect(this.x, this.y, this.width, this.height);
     }
     
     public int getCurrnetX(){
