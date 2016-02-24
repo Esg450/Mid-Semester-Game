@@ -17,27 +17,46 @@ import javax.swing.ImageIcon;
  */
 public class Baby extends Rectangle{
     private int dy = 0;
+    private int speed = 5;
+    private int size = 10;
+    private boolean dirRight = true;
     private ImageIcon image = new ImageIcon();
    
     public Baby(int x, int y)
     {
         super.setLocation(x, y);
+        image = getRandomImage();
         
     }
-    public double getCurrentX()
+    public int getCurrentX()
     {
-        return super.getX();
+        return x;
     }
-    public double getCurrentY()
+    public int getCurrentY()
     {
-        return super.getY();
+        return y;
     }
     public void move()
     {
-        
+         if(dirRight) {
+            this.x += speed;
+            if(this.x >= 600 - size) {
+                this.switchDirections();
+            }
+        } else {
+            this.x -= speed;
+            if(this.x <= 0) {
+                this.switchDirections();
+            }
+        }
+    }
+    public void switchDirections()
+    {
+        dirRight = !dirRight;
     }
     public void drawImage(Graphics g)
     {
+        move();
         g.drawImage(image.getImage(), this.x, this.y, null);
     }
     public ImageIcon getRandomImage()
