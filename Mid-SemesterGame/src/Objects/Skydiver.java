@@ -23,7 +23,7 @@ public class Skydiver extends Rectangle{
     private GamePanel panel1;
    
     public Skydiver(int panelWidth, int panelHeight, GamePanel thePanel){
-        this.skydiverImage = new ImageIcon("src/Images/dogSkydiver.jpg").getImage();
+        this.skydiverImage = new ImageIcon("src/Images/skydiver.png").getImage();
         this.panel1 = thePanel;
         this.size = new Dimension(panelWidth, panelHeight);
         this.skydiverSize = 50;
