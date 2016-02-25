@@ -30,7 +30,7 @@ public class Obstacle extends Rectangle {
         this.obstacleSize = 50;
         this.obstacleSpeed = 7;
         double r = Math.random();
-        int random = (int)(r * panelWidth);
+        int random = (int)(r * panelWidth-50);
         this.setBounds(random, 500, obstacleSize, obstacleSize);  
       
     }

@@ -38,22 +38,24 @@ public class Skydiver extends Rectangle{
         if(this.x >=size.width - skydiverSize) 
         {
             
-            this.x += 0;
-            this.x--;
+            
+            this.x-=10;
         }
         
-        else if(x<0){
+        else if(x<=0){
             
-            this.x+=0;
-            this.x++;
+            
+            this.x+=10;
         }
         
         else{
             this.x+=dx;
         }
         
+        
+         
       
-        //this.x+=dx;
+        
     }
     
     
