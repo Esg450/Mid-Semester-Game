@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.Rectangle;
 import Objects.*;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
 /**
  *
@@ -27,9 +28,12 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
     private boolean gameOver;
     private int highScore;
     static int timerCount;
+    private Background background1;
     
     GamePanel(){
+        
         this.addKeyListener(this);
+        background1 = new Background(500, 500, this); 
         player1 = new Skydiver(500,500, this);
         timerCount =0;
         obstacles = new ArrayList <>();
@@ -47,6 +51,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
        super.paintComponent(g);
        
        g.clearRect(0, 0, this.getWidth(), this.getHeight());
+       background1.paintComponent(g);
        player1.paintComponenet(g);
        
        for(int i = 0; i<obstacles.size(); i++){
