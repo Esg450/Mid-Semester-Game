@@ -28,7 +28,7 @@ public class Obstacle extends Rectangle {
         this.panel1 = panel1;
         this.size = new Dimension(panelWidth, panelHeight);
         this.obstacleSize = 50;
-        this.obstacleSpeed = 10;
+        this.obstacleSpeed = 7;
         double r = Math.random();
         int random = (int)(r * panelWidth);
         this.setBounds(random, 500, obstacleSize, obstacleSize);  
@@ -43,7 +43,7 @@ public class Obstacle extends Rectangle {
     public void paintComponent(Graphics g){
        move();
         g.setColor(Color.black);
-        g.drawImage(obstacleImage,this.x, this.y, this.width, this.height,panel1);
+        g.drawImage(obstacleImage, this.x, this.y, this.width, this.height,panel1);
     }
     
     public double getCurrentX() {
@@ -56,7 +56,7 @@ public class Obstacle extends Rectangle {
     
   
     public void move() {
-        this.y-=10;
+        this.y -= this.obstacleSpeed;
         
     }
 }
