@@ -27,6 +27,7 @@ public class GameFrame extends JFrame{
         this.panel = panel;
         this.getContentPane().add(this.panel);
         setVisible(true);
+        setResizable(false);
     }
    
 }

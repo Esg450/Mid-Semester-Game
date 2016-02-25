@@ -49,21 +49,26 @@ public class GamePanelTest {
         System.out.println("getHighScore");
         GamePanel instance = new GamePanel();
         int expResult = 0;
-        int result = instance.getHighScore();
+        int result = instance.getScore();
         assertEquals(expResult, result);
     }
 
     
     @Test
-    public void testCalculateHighScore() {
+    public void testCalculateScore() {
         System.out.println("calculateHighScore");
         ActionEvent e = null;
         GamePanel instance = new GamePanel();
         double expResult = GamePanel.getTimerCount();
-        double result = instance.calculateHighScore(e);
+        double result = instance.calculateScore(e);
         assertEquals(expResult, result, 0.0);
-       
-        
     }
+
+   
+
+    
+
+
+   
     
 }

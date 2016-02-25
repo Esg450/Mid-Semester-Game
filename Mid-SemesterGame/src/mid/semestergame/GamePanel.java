@@ -26,25 +26,31 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
     private ArrayList<Baby> babies;
     private int playerScore;
     private boolean gameOver;
+    private int score1;
     private int highScore;
     static int timerCount;
+    private int timer2Count;
     private Background background1;
+    private JLabel score;
     
     GamePanel(){
         
         this.addKeyListener(this);
         background1 = new Background(500, 500, this); 
         player1 = new Skydiver(500,500, this);
-        timerCount =0;
+        GamePanel.timerCount =0;
+        timer2Count = 0;
         obstacles = new ArrayList <>();
         playerScore = 0;
         gameOver =false;
-        highScore=0;
+        score1=0;
         timer1 = new Timer(50, this);
         timer1.start();
         timerObstacle = new Timer(500,this);
         timerObstacle.start();
         setFocusable(true);
+        score = new JLabel("Score: "+getScore());
+        add(score);
     }
     
     public void paintComponent(Graphics g){
@@ -62,18 +68,20 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
        for(int i = 0; i<obstacles.size(); i++){
            if(player1.intersects(obstacles.get(i))){
                timer1.stop();
+               timerObstacle.stop();
            }
            else{
-               highScore++;
+               score1++;
            }
            
+          
        }
       /* for(int i = 0; i<babies.size(); i++){
            timer1.stop();
        }
        */       
        
-       
+        
     }
         
     public void actionPerformed(ActionEvent e){
@@ -81,10 +89,14 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
         
         if(o== timer1){
             this.repaint();
-            this.timerCount++;
+            
+            
         }
         else if( o == timerObstacle){
             obstacles.add(new Obstacle(500,500, this));
+            timer2Count++;
+            GamePanel.timerCount++;
+            updateScore();
         }
     }
     
@@ -100,20 +112,30 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
     public void keyReleased(KeyEvent e){
         player1.keyReleased(e);
     }
-    public int getHighScore(){
-        return highScore;
+    public int getScore(){
+        return score1;
     }
     
-    public double calculateHighScore(ActionEvent e){
+    public double calculateScore(ActionEvent e){
         Object o = e.getSource();
-        if(o== timer1){
-            this.highScore++;
+        if(o== timerObstacle && timer2Count%1000==0){
+            score1++;
         }
-        return this.highScore;
+        return this.score1;
     }
     
     public static int getTimerCount(){
         return GamePanel.timerCount;
     }
+    
+    public void updateScore(){
+        this.score.setText( "Score: "+getScore());
+    }
+    
+    
+    
+    //public boolean gameOver(){
+        
+    //}
     
 }
