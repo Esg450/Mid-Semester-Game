@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import mid.semestergame.*;
 
@@ -22,6 +23,7 @@ public class Skydiver extends Rectangle{
     private GamePanel panel1;
    
     public Skydiver(int panelWidth, int panelHeight, GamePanel thePanel){
+        this.skydiverImage = new ImageIcon("src/Images/dogSkydiver.jpg").getImage();
         this.panel1 = thePanel;
         this.size = new Dimension(panelWidth, panelHeight);
         this.skydiverSize = 50;
@@ -74,7 +76,7 @@ public class Skydiver extends Rectangle{
         
         move();
         g.setColor(Color.red);
-        g.fillRect(this.x, this.y, this.width, this.height);
+        g.drawImage(skydiverImage, x, y, width, height, panel1);
     }
  
 }
