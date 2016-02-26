@@ -32,6 +32,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
     private int timer2Count;
     private Background background1;
     private JLabel score;
+    private int lowScore;
     
     GamePanel(){
         
@@ -51,6 +52,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
         setFocusable(true);
         score = new JLabel("Score: "+getScore());
         add(score);
+        this.lowScore = 0;
     }
     
     public void paintComponent(Graphics g){
@@ -132,10 +134,35 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
         this.score.setText( "Score: "+getScore());
     }
     
-    
-    
-    //public boolean gameOver(){
-        
-    //}
-    
+   public int getHighScore(int oldScore, int newScore){
+       if(newScore>oldScore){
+           this.highScore = newScore;
+       }
+       
+       else{
+           this.highScore = oldScore;
+       }
+       return highScore;
+   }
+   
+   public int getLowScore(int oldScore, int newScore){
+       if(newScore<oldScore){
+           this.lowScore = newScore;
+       }
+       
+       else{
+           this.lowScore = oldScore;
+       }
+       return lowScore;
+   }
+   
+   public String gameOver(boolean gameOver){
+       if(gameOver == true){
+           return "Game Over";
+       }
+       
+       else{
+           return "Game in play";
+       }
+   }
 }

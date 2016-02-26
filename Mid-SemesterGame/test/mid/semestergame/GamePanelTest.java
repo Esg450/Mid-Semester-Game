@@ -40,35 +40,78 @@ public class GamePanelTest {
     public void tearDown() {
     }
 
-
-    /**
-     * Test of getHighScore method, of class GamePanel.
-     */
     @Test
-    public void testGetHighScore() {
+    public void testGetHighScoreWhenOldScoreIsHigher() {
         System.out.println("getHighScore");
+        GamePanel instance = new GamePanel();
+        int oldScore = 12;
+        int newScore = 11;
+        int expResult = 12;
+        int result = instance.getHighScore(oldScore, newScore);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testGetHighScoreWhenNewScoreIsHigher() {
+        System.out.println("getHighScore");
+        GamePanel instance = new GamePanel();
+        int oldScore = 11;
+        int newScore = 12;
+        int expResult = 12;
+        int result = instance.getHighScore(oldScore, newScore);
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testGetScore() {
+        System.out.println("getScore");
         GamePanel instance = new GamePanel();
         int expResult = 0;
         int result = instance.getScore();
         assertEquals(expResult, result);
+       
     }
-
+  
+    @Test
+    public void testGetLowScoreWhenOldScoreIsLower() {
+        System.out.println("getLowScore");
+        int oldScore = 10;
+        int newScore = 11;
+        GamePanel instance = new GamePanel();
+        int expResult = 10;
+        int result = instance.getLowScore(oldScore, newScore);
+        assertEquals(expResult, result);
+    }
     
     @Test
-    public void testCalculateScore() {
-        System.out.println("calculateHighScore");
-        ActionEvent e = null;
+    public void testGetLowScoreWhenNewScoreIsLower() {
+        System.out.println("getLowScore");
+        int oldScore = 11;
+        int newScore = 10;
         GamePanel instance = new GamePanel();
-        double expResult = GamePanel.getTimerCount();
-        double result = instance.calculateScore(e);
-        assertEquals(expResult, result, 0.0);
+        int expResult = 10;
+        int result = instance.getLowScore(oldScore, newScore);
+        assertEquals(expResult, result);
     }
 
-   
-
+    @Test
+    public void testGameOverWhenGameOverIsFalse() {
+        System.out.println("gameOver");
+        boolean gameOver = false;
+        GamePanel instance = new GamePanel();
+        String expResult = "Game in play";
+        String result = instance.gameOver(gameOver);
+        assertEquals(expResult, result);
+    }
     
-
-
-   
+    @Test
+    public void testGameOverWhenGameOverIsTrue() {
+        System.out.println("gameOver");
+        boolean gameOver = true;
+        GamePanel instance = new GamePanel();
+        String expResult = "Game Over";
+        String result = instance.gameOver(gameOver);
+        assertEquals(expResult, result);
+    }
     
 }
