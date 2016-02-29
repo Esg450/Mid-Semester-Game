@@ -41,8 +41,8 @@ public class Obstacle extends Rectangle {
     }
     
     public void paintComponent(Graphics g){
-       move();
-        g.setColor(Color.black);
+        move();
+        //g.setColor(Color.black);
         g.drawImage(obstacleImage, this.x, this.y, this.width, this.height,panel1);
     }
     
