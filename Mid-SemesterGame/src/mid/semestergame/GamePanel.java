@@ -96,13 +96,15 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
     public void actionPerformed(ActionEvent e){
         Object o = e.getSource();
         
+
         if(o== timer1){
             this.repaint();
             
             
         }
         else if( o == timerObstacle){
-            obstacles.add(new Obstacle(500,500, this));
+           obstacles.add(new Obstacle(500,500, this));
+           babies.add(new Baby(500,500, this));
             timer2Count++;
             GamePanel.timerCount++;
             updateScore();
