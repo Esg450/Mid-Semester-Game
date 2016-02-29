@@ -29,7 +29,6 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
     private int score1;
     private int highScore;
     static int timerCount;
-    private int timer2Count;
     private Background background1;
     private JLabel score;
     private int lowScore;
@@ -40,7 +39,6 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
         background1 = new Background(500, 500, this); 
         player1 = new Skydiver(500,500, this);
         GamePanel.timerCount =0;
-        timer2Count = 0;
         obstacles = new ArrayList <>();
         babies = new ArrayList <>();
         playerScore = 0;
@@ -48,7 +46,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
         score1=0;
         timer1 = new Timer(50, this);
         timer1.start();
-        timerObstacle = new Timer(500,this);
+        timerObstacle = new Timer(750,this);
         timerObstacle.start();
         setFocusable(true);
         score = new JLabel("Score: "+getScore());
@@ -77,9 +75,6 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
                timer1.stop();
                timerObstacle.stop();
            }
-           else{
-               score1++;
-           }
            
           
        }
@@ -100,15 +95,12 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
 
         if(o== timer1){
             this.repaint();
-            
-            
+             
         }
         else if( o == timerObstacle){
            obstacles.add(new Obstacle(500,500, this));
            babies.add(new Baby(500,500, this));
-            timer2Count++;
-            GamePanel.timerCount++;
-            updateScore();
+           updateScore();
         }
     }
     
@@ -127,18 +119,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
     public int getScore(){
         return score1;
     }
-    
-    public double calculateScore(ActionEvent e){
-        Object o = e.getSource();
-        if(o== timerObstacle && timer2Count%1000==0){
-            score1++;
-        }
-        return this.score1;
-    }
-    
-    public static int getTimerCount(){
-        return GamePanel.timerCount;
-    }
+  
     
     public void updateScore(){
         this.score.setText( "Score: "+getScore());
