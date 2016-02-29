@@ -73,7 +73,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
        
        
        for(int i = 0; i<obstacles.size(); i++){
-           if(player1.intersects(obstacles.get(i))){
+           if (player1.intersects(obstacles.get(i).x - 15, obstacles.get(i).y + 10, obstacles.get(i).width, obstacles.get(i).height)) {
                timer1.stop();
                timerObstacle.stop();
            }

@@ -28,45 +28,35 @@ public class Skydiver extends Rectangle{
         this.size = new Dimension(panelWidth, panelHeight);
         this.skydiverSize = 50;
         this.skydiverSpeed = 10;
-        this.setBounds(0, size.height-8*skydiverSize, skydiverSize, skydiverSize);
-        
-        
+        this.setBounds(0, 50, skydiverSize, skydiverSize);        
         
     }
 
     private void move() {
-        if(this.x >=size.width - skydiverSize) 
-        {
+        if(this.x >= size.width - skydiverSize) {
             
-            
-            this.x-=10;
+            this.x -= 10;
         }
         
-        else if(x<=0){
+        else if(x <= 0) {
             
-            
-            this.x+=10;
+            this.x += 10;
         }
         
-        else{
-            this.x+=dx;
+        else {
+            this.x += dx;
         }
-        
-        
-         
-      
-        
     }
     
     
     public void keyPressed(KeyEvent e){
         if(e.getKeyCode() == KeyEvent.VK_LEFT)
         {
-            this.dx = -50;
+            this.dx = -20;
         }
         else if(e.getKeyCode() == KeyEvent.VK_RIGHT)
         {
-            this.dx = 50;
+            this.dx = 20;
         }
     }
     
