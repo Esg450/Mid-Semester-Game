@@ -33,7 +33,9 @@ public class Baby extends Rectangle{
         this.size = new Dimension(panelWidth, panelHeight);
         this.babySize = 20;
         this.babySpeed = 3;
-         this.setBounds(5, 500, babySize, babySize); 
+        double r = Math.random();
+        int random = (int)(r * panelWidth - 20);
+         this.setBounds(random, 500, babySize, babySize); 
     }
     public int getCurrentX()
     {
