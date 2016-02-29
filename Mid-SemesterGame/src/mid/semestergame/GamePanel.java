@@ -85,7 +85,8 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
        }
        for(int i = 0; i<babies.size(); i++){
            if(player1.intersects(babies.get(i))){
-               score1+=3;
+               score1+=100;
+               babies.remove(i);
            }
        }
              
