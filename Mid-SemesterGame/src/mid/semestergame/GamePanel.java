@@ -42,6 +42,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
         GamePanel.timerCount =0;
         timer2Count = 0;
         obstacles = new ArrayList <>();
+        babies = new ArrayList <>();
         playerScore = 0;
         gameOver =false;
         score1=0;
@@ -65,6 +66,10 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
        for(int i = 0; i<obstacles.size(); i++){
            obstacles.get(i).paintComponent(g);
        }
+       for(int i =0; i <babies.size(); i++)
+       {
+           babies.get(i).paintComponent(g);
+       }
        
        
        for(int i = 0; i<obstacles.size(); i++){
@@ -78,10 +83,12 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
            
           
        }
-      /* for(int i = 0; i<babies.size(); i++){
-           timer1.stop();
+       for(int i = 0; i<babies.size(); i++){
+           if(player1.intersects(babies.get(i))){
+               score1+=3;
+           }
        }
-       */       
+             
        
         
     }

@@ -49,21 +49,21 @@ public class Baby extends Rectangle{
     }
    
     
-    public void drawImage(Graphics g)
+    public void paintComponent(Graphics g)
     {
        move();
        g.drawImage(image.getImage(), this.x, this.y, this.width, this.height,panel1);
     }
     public ImageIcon getRandomImage()
     {
-        Random r = new Random();
+       /* Random r = new Random();
         int randNum = r.nextInt(3);
         ArrayList<String> babyPics = new ArrayList<String>();
         babyPics.add("babyPic1.png");
         babyPics.add("babyPic2.png");
         babyPics.add("babyPic3.png");
-        String randomImageFile = babyPics.get(randNum);
-        ImageIcon randomImage = new ImageIcon("src/images/"+randomImageFile);
+        String randomImageFile = babyPics.get(randNum);*/
+        ImageIcon randomImage = new ImageIcon("src/images/babyPic1.png");
         return randomImage;
         
     }
