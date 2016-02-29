@@ -32,9 +32,10 @@ public class Background extends Rectangle{
     
     public void paintComponent(Graphics g){
        move();
-       g.setColor(Color.black);
-       g.drawImage(skyImage,this.x, this.y, 500, 700,thePanel);
-       g.drawImage(skyImage,this.x, this.y+600, 500, 700,thePanel);
+       g.drawImage(skyImage,this.x, this.y, 500, 338,thePanel);
+       g.drawImage(skyImage,this.x, this.y+338, 500, 338,thePanel);
+       g.drawImage(skyImage,this.x, this.y+676, 500, 338,thePanel);
+       
     }
     
     public double getCurrentX() {
@@ -47,13 +48,13 @@ public class Background extends Rectangle{
     
   
     public void move() {
-        if(this.y<= -600)
+        if(this.y<= -338)
         {
             this.y=0;
         }
         else
         {
-            this.y-=5;
+            this.y-=4;
         }
         
     }
