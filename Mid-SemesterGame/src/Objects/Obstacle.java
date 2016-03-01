@@ -41,7 +41,6 @@ public class Obstacle extends Rectangle {
       
     }
     
-    //Not yet implemented
     public Image getRandomImage() {
        Random rand = new Random();
        int randNum = rand.nextInt(this.imageList.size());

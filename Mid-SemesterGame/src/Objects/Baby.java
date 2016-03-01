@@ -7,6 +7,7 @@ package Objects;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Random;
@@ -22,21 +23,31 @@ public class Baby extends Rectangle{
     private int babySpeed = 5;
     private int babySize = 10;
     private final Dimension size;
-    private ImageIcon image = new ImageIcon();
+    private Image image;
     private GamePanel panel1;
+    
+    public static ArrayList<String> imageList = new ArrayList<String>();
    
     public Baby(int panelHeight, int panelWidth, GamePanel panel1)
     {
         super.setLocation(x, y);
-        image = getRandomImage();
-         this.panel1 = panel1;
+        this.image = this.getRandomImage();
+        this.panel1 = panel1;
         this.size = new Dimension(panelWidth, panelHeight);
-        this.babySize = 20;
+        this.babySize = 30;
         this.babySpeed = 7;
         double r = Math.random();
         int random = (int)(r * panelWidth - 20);
-         this.setBounds(random, 500, babySize, babySize); 
+        this.setBounds(random, 500, babySize, babySize); 
     }
+    
+    public Image getRandomImage() {
+       Random rand = new Random();
+       int randNum = rand.nextInt(this.imageList.size());
+       Image i = new ImageIcon(this.imageList.get(randNum)).getImage();
+       return i;
+    }
+    
     public int getCurrentX()
     {
         return x;
@@ -54,21 +65,7 @@ public class Baby extends Rectangle{
     public void paintComponent(Graphics g)
     {
        move();
-       g.drawImage(image.getImage(), this.x, this.y, this.width, this.height,panel1);
+       g.drawImage(image, this.x, this.y, this.width, this.height,panel1);
     }
-    public ImageIcon getRandomImage()
-    {
-       /* Random r = new Random();
-        int randNum = r.nextInt(3);
-        ArrayList<String> babyPics = new ArrayList<String>();
-        babyPics.add("babyPic1.png");
-        babyPics.add("babyPic2.png");
-        babyPics.add("babyPic3.png");
-        String randomImageFile = babyPics.get(randNum);*/
-        ImageIcon randomImage = new ImageIcon("src/images/babyPic1.png");
-        return randomImage;
-        
-    }
-    
-    
+
 }

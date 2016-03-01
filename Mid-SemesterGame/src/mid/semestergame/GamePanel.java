@@ -59,9 +59,14 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
         
         //Set static variables
         //Set list of images for the obstacle objects
+        Obstacle.imageList.add("src/Images/plane1.png");
         Obstacle.imageList.add("src/Images/plane2.png");
-        Obstacle.imageList.add("src/Images/plane_0_titi_son.png");
-        Obstacle.imageList.add("src/Images/redPlane.jpg");
+        Obstacle.imageList.add("src/Images/plane3.png");
+        
+        //Set the baby images
+        Baby.imageList.add("src/Images/baby1.png");
+        Baby.imageList.add("src/Images/baby2.png");
+        Baby.imageList.add("src/Images/baby3.png");
     }
     
     public void paintComponent(Graphics g){
