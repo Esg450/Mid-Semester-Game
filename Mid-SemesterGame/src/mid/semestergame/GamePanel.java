@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package mid.semestergame;
+
+import Objects.Obstacle;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -14,6 +16,7 @@ import Objects.*;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
+
 /**
  *
  * @author matthewtucker
@@ -53,6 +56,12 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
         score = new JLabel("Score: "+getScore());
         add(score);
         this.lowScore = 0;
+        
+        //Set static variables
+        //Set list of images for the obstacle objects
+        Obstacle.imageList.add("src/Images/plane2.png");
+        Obstacle.imageList.add("src/Images/plane_0_titi_son.png");
+        Obstacle.imageList.add("src/Images/redPlane.jpg");
     }
     
     public void paintComponent(Graphics g){

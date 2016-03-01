@@ -23,12 +23,14 @@ public class GameController {
     }
     
     public void startGame(){
-        
+        theMenu.dispose();
         theFrame = new GameFrame("Midsemester Game", this);
+        
     }
     
     public void returnToMenu(){
         theFrame.dispose();
+        theMenu.setLocationRelativeTo(null);
         theMenu.setVisible(true);
     }
 }
