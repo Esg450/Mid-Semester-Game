@@ -32,9 +32,10 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
     private Background background1;
     private JLabel score;
     private int lowScore;
+    private GameFrame masterGameFrame;
     
-    GamePanel(){
-        
+    GamePanel(GameFrame theGameFrame){
+        masterGameFrame = theGameFrame;
         this.addKeyListener(this);
         background1 = new Background(500, 500, this); 
         player1 = new Skydiver(500,500, this);
@@ -74,6 +75,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
            if (player1.intersects(obstacles.get(i).x - 15, obstacles.get(i).y + 10, obstacles.get(i).width, obstacles.get(i).height)) {
                timer1.stop();
                timerObstacle.stop();
+               this.gameOver(true);
            }
            
           
@@ -149,6 +151,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
    
    public String gameOver(boolean gameOver){
        if(gameOver == true){
+           masterGameFrame.returnToMainMenu();
            return "Game Over";
        }
        

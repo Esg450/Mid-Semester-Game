@@ -11,6 +11,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
@@ -20,7 +21,16 @@ public class Background extends Rectangle{
     private Image skyImage;
     private int dy;
     private GamePanel thePanel;
+    private MenuPanel theMenuPanel;
     private final Dimension size;
+    
+    public Background(int panelHeight, int panelWidth, MenuPanel panel1){
+        this.skyImage =new  ImageIcon("src/Images/SkyBackground1.jpg").getImage();
+        this.theMenuPanel = panel1;
+        this.size = new Dimension(panelWidth, panelHeight);
+        this.setBounds(x, y, 500, 500);
+    }
+    
     
     public Background(int panelHeight, int panelWidth, GamePanel panel1){
         this.skyImage =new  ImageIcon("src/Images/SkyBackground1.jpg").getImage();
@@ -35,6 +45,14 @@ public class Background extends Rectangle{
        g.drawImage(skyImage,this.x, this.y, 500, 338,thePanel);
        g.drawImage(skyImage,this.x, this.y+338, 500, 338,thePanel);
        g.drawImage(skyImage,this.x, this.y+676, 500, 338,thePanel);
+       
+    }
+    
+    public void paintComponentMenu(Graphics g){
+       move();
+       g.drawImage(skyImage,this.x, this.y, 500, 338,theMenuPanel);
+       g.drawImage(skyImage,this.x, this.y+338, 500, 338,theMenuPanel);
+       g.drawImage(skyImage,this.x, this.y+676, 500, 338,theMenuPanel);
        
     }
     
@@ -54,7 +72,7 @@ public class Background extends Rectangle{
         }
         else
         {
-            this.y-=4;
+            this.y-=2;
         }
         
     }

@@ -43,6 +43,7 @@ public class GamePanelTest {
     @Test
     public void testGetHighScoreWhenOldScoreIsHigher() {
         System.out.println("getHighScore");
+        
         GamePanel instance = new GamePanel();
         int oldScore = 12;
         int newScore = 11;
