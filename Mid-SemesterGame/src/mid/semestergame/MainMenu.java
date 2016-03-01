@@ -16,6 +16,7 @@ import javax.swing.Timer;
  */
 public class MainMenu extends JFrame {
     private GameController masterGameController;
+    private javax.swing.JButton instructionsButton;
     private javax.swing.JButton exitButton;
     private javax.swing.JButton highScoresButton;
     private javax.swing.JButton startButton;
@@ -47,10 +48,11 @@ public class MainMenu extends JFrame {
 
         startButton = new javax.swing.JButton();
         highScoresButton = new javax.swing.JButton();
-        exitButton = new javax.swing.JButton();
+        instructionsButton = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
+        exitButton = new javax.swing.JButton();
 
-        
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         startButton.setBackground(java.awt.SystemColor.text);
         startButton.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
@@ -70,6 +72,15 @@ public class MainMenu extends JFrame {
             }
         });
 
+        instructionsButton.setBackground(java.awt.SystemColor.text);
+        instructionsButton.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
+        instructionsButton.setText("Instructions");
+        instructionsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                instructionsButtonActionPerformed(evt);
+            }
+        });
+
         exitButton.setBackground(java.awt.SystemColor.text);
         exitButton.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
         exitButton.setText("Exit");
@@ -78,9 +89,11 @@ public class MainMenu extends JFrame {
                 exitButtonActionPerformed(evt);
             }
         });
-
+        
         titleLabel.setFont(new java.awt.Font("OCR A Extended", 0, 18)); // NOI18N
         titleLabel.setText("Xtreme Sky Diving Baby Rescue 10,000 ");
+
+        
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(layout);
@@ -96,6 +109,7 @@ public class MainMenu extends JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(highScoresButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(startButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(instructionsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
@@ -109,22 +123,29 @@ public class MainMenu extends JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(highScoresButton)
                 .addGap(18, 18, 18)
+                .addComponent(instructionsButton)
+                .addGap(18, 18, 18)
                 .addComponent(exitButton)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>                        
 
+    
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        masterGameController.startGame();// TODO add your handling code here:
+    }
+    
     private void highScoresButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
     }                                                
 
-    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        masterGameController.startGame();// TODO add your handling code here:
-    }                                           
+    private void instructionsButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                   
+        // TODO add your handling code here:
+    }                                                  
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
+        System.exit(0);// TODO add your handling code here:
     }
 }
