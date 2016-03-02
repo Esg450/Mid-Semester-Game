@@ -17,16 +17,27 @@ import javax.swing.*;
  *
  * @author Zack
  */
-public class HighScore {
+public class HighScore extends JPanel{
     
     private int[] scores = new int[5];
-    private String fileName = "";
-    private JPanel panel = new JPanel();
-    public HighScore(String fileName)
+    private String fileName = "HighScores.txt";
+    private JLabel score1;
+    private JLabel score2;
+    private JLabel score3;
+    private JLabel score4;
+    private JLabel score5;
+    public HighScore()
     {
         File file = new File(fileName);
-        this.fileName = fileName;
+        
         readFileIn();
+        this.add(score1);
+        this.add(score2);
+        this.add(score3);
+        this.add(score4);
+        this.add(score5);
+        
+        
     }
     private void readFileIn()
     {
@@ -37,6 +48,11 @@ public class HighScore {
             scores[counter] = in.nextInt();
             counter++;
         }
+        score1= new JLabel("1. " + scores[0]);
+        score2= new JLabel("2. " + scores[1]);
+        score3= new JLabel("3. " + scores[2]);
+        score4= new JLabel("4. " + scores[3]);
+        score5= new JLabel("5. " + scores[4]);
         
     }
     public void addHighScore(int score)
@@ -44,8 +60,6 @@ public class HighScore {
         try
         {
             
-        
-        
         PrintWriter pw = new PrintWriter(fileName);
        
        for(int i = 0;i<scores.length;i++)
@@ -55,7 +69,6 @@ public class HighScore {
                 scores[i] = score;
             }
           
-           
         }
        for(int i =0;i<scores.length;i++)
        {
@@ -69,23 +82,11 @@ public class HighScore {
     }
     public void displayHighScores()
     {
-        panel.setSize(400,400);
+        this.setSize(400,400);
         getComponents();
-        panel.setVisible(true);
+        this.setVisible(true);
         
     }
-    private void getComponents()
-    {
-        JLabel score1 = new JLabel("1. " + scores[0]);
-        JLabel score2 = new JLabel("2. " + scores[1]);
-        JLabel score3 = new JLabel("3. " + scores[2]);
-        JLabel score4 = new JLabel("4. " + scores[3]);
-        JLabel score5 = new JLabel("5. " + scores[4]);
-        panel.add(score1);
-        panel.add(score2);
-        panel.add(score3);
-        panel.add(score4);
-        panel.add(score5);
-        
-    }
+   
+   
 }
