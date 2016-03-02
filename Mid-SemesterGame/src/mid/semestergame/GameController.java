@@ -5,32 +5,56 @@
  */
 package mid.semestergame;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Graham
  */
-public class GameController {
+public class GameController implements ActionListener {
     private MainMenu theMenu;
     private MenuPanel theMenuPanel;
     private GamePanel thePanel;
     private GameFrame theFrame;
+    private InstructionsPanel inst;
     
     public GameController(){
+        this.theFrame = new GameFrame("MidSemesterGame", this);
+        this.theMenuPanel = new MenuPanel();
+        this.thePanel = new GamePanel();
+        this.inst = new InstructionsPanel();
+        launchToMenuPanel();
+        addMenuListeners();
         
-        theMenuPanel = new MenuPanel();
-        theMenu = new MainMenu("MidSemesterGame", this);
-        
+           
     }
     
-    public void startGame(){
-        theMenu.dispose();
-        theFrame = new GameFrame("Midsemester Game", this);
-        
+    private void launchToMenuPanel(){
+        this.theFrame.add(theMenuPanel);
+        this.theFrame.setVisible(true);
+        this.theFrame.setResizable(false);
     }
     
-    public void returnToMenu(){
-        theFrame.dispose();
-        theMenu.setLocationRelativeTo(null);
-        theMenu.setVisible(true);
+    public void addMenuListeners(){
+        this.theMenuPanel.startButton.addActionListener(this);
+        this.theMenuPanel.highScoresButton.addActionListener(this);
+        this.theMenuPanel.instructionsButton.addActionListener(this);
+        this.theMenuPanel.exitButton.addActionListener(this);
+        
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("Hi");
+        Object o = e.getSource();
+        if(o==this.theMenuPanel.startButton){
+            this.theFrame.remove(this.theMenuPanel);
+            
+            this.theFrame.add(this.thePanel);
+            this.thePanel.setFocusable(true);
+            this.thePanel.requestFocusInWindow();
+            this.theFrame.revalidate(); 
+        }
     }
 }

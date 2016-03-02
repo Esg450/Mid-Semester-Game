@@ -14,7 +14,8 @@ import javax.swing.JPanel;
  * @author Graham
  */
 public class GameFrame extends JFrame{
-    private final GamePanel panel;
+   
+    
     private GameController masterGameController;
 
     public GameFrame(String title,  GameController theGameController) {
@@ -24,15 +25,8 @@ public class GameFrame extends JFrame{
         this.setSize(new Dimension(500, 500));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-
-        this.panel = new GamePanel(this);
-        this.getContentPane().add(this.panel);
-        setVisible(true);
-        setResizable(false);
-    }
-    
-    public void returnToMainMenu(){
-        this.masterGameController.returnToMenu();
+        
+        
     }
    
 }

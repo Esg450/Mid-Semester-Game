@@ -37,8 +37,8 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
     private int lowScore;
     private GameFrame masterGameFrame;
     
-    GamePanel(GameFrame theGameFrame){
-        masterGameFrame = theGameFrame;
+    GamePanel(){
+        super();
         this.addKeyListener(this);
         background1 = new Background(500, 500, this); 
         player1 = new Skydiver(500,500, this);
@@ -53,6 +53,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
         timerObstacle = new Timer(750,this);
         timerObstacle.start();
         setFocusable(true);
+        requestFocusInWindow();
         score = new JLabel("Score: "+getScore());
         add(score);
         this.lowScore = 0;
@@ -125,12 +126,13 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
     }
     
     public void keyPressed (KeyEvent e){
-        
         player1.keyPressed(e);
+        System.out.println("Pressed");
     }
     
     public void keyReleased(KeyEvent e){
         player1.keyReleased(e);
+        System.out.println("Released");
     }
     public int getScore(){
         return score1;
@@ -165,7 +167,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
    
    public String gameOver(boolean gameOver){
        if(gameOver == true){
-           masterGameFrame.returnToMainMenu();
+           
            return "Game Over";
        }
        
