@@ -39,6 +39,7 @@ public class GamePanelTest {
     @After
     public void tearDown() {
     }
+    
 
     @Test
     public void testGetHighScoreWhenOldScoreIsHigher() {
@@ -113,6 +114,49 @@ public class GamePanelTest {
         String expResult = "Game Over";
         String result = instance.gameOver(gameOver);
         assertEquals(expResult, result);
+    }
+
+    
+    @Test
+    public void testGetHighScoreWhenOldScoreIs() {
+        System.out.println("getHighScore");
+        int oldScore = 12;
+        int newScore = 11;
+        GamePanel instance = null;
+        int expResult = 12;
+        int result = instance.getHighScore(oldScore, newScore);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getLowScore method, of class GamePanel.
+     
+    @Test
+    public void testGetLowScore() {
+        System.out.println("getLowScore");
+        int oldScore = 0;
+        int newScore = 0;
+        GamePanel instance = null;
+        int expResult = 0;
+        int result = instance.getLowScore(oldScore, newScore);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of gameOver method, of class GamePanel.
+     */
+    @Test
+    public void testGameOver() {
+        System.out.println("gameOver");
+        boolean gameOver = false;
+        GamePanel instance = null;
+        String expResult = "";
+        String result = instance.gameOver(gameOver);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
     
 }

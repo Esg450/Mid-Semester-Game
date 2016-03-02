@@ -44,8 +44,6 @@ public class MenuPanel extends JPanel implements ActionListener {
         gameOver =false;
         timer1 = new Timer(50, this);
         timer1.start();
-        timerObstacle = new Timer(750,this);
-        timerObstacle.start();
         setFocusable(true);
     }
     

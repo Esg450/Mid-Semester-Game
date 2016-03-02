@@ -15,6 +15,7 @@ import java.awt.Rectangle;
 import Objects.*;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
@@ -23,7 +24,7 @@ import java.util.ArrayList;
  */
 public class GamePanel extends JPanel implements ActionListener,KeyListener {
     private Timer timer1;
-    private Timer timerObstacle;
+    public Timer timerObstacle;
     private Skydiver player1;
     private ArrayList <Obstacle> obstacles;
     private ArrayList<Baby> babies;
@@ -51,7 +52,6 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
         timer1 = new Timer(50, this);
         timer1.start();
         timerObstacle = new Timer(750,this);
-        timerObstacle.start();
         setFocusable(true);
         requestFocusInWindow();
         score = new JLabel("Score: "+getScore());
@@ -165,14 +165,20 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
        return lowScore;
    }
    
-   public String gameOver(boolean gameOver){
+   public void gameOver(boolean gameOver){
        if(gameOver == true){
+           try{
+           PrintWriter out = new PrintWriter("src/TextFiles/HighScores.txt");
+            out.println(""+ this.score1);
+            out.close();
+           }
            
-           return "Game Over";
+           catch(Exception e){
+               System.out.println("FileNotFound");
+           }
+               
        }
        
-       else{
-           return "Game in play";
-       }
    }
+
 }

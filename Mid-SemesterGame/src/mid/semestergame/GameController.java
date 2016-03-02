@@ -18,12 +18,14 @@ public class GameController implements ActionListener {
     private GamePanel thePanel;
     private GameFrame theFrame;
     private InstructionsPanel inst;
+    private HighScore hscore1;
     
     public GameController(){
         this.theFrame = new GameFrame("MidSemesterGame", this);
         this.theMenuPanel = new MenuPanel();
         this.thePanel = new GamePanel();
         this.inst = new InstructionsPanel();
+        this.hscore1 = new HighScore();
         launchToMenuPanel();
         addMenuListeners();
         
@@ -46,7 +48,7 @@ public class GameController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Hi");
+        
         Object o = e.getSource();
         if(o==this.theMenuPanel.startButton){
             this.theFrame.remove(this.theMenuPanel);
@@ -55,6 +57,15 @@ public class GameController implements ActionListener {
             this.thePanel.setFocusable(true);
             this.thePanel.requestFocusInWindow();
             this.theFrame.revalidate(); 
+            thePanel.timerObstacle.start();
+        }
+        
+        else if(o == this.theMenuPanel.highScoresButton){
+            this.theFrame.remove(this.theMenuPanel);
+            this.theFrame.add(this.hscore1);
+            this.theFrame.revalidate();
+          
+        
         }
     }
 }

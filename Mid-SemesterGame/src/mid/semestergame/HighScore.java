@@ -20,7 +20,7 @@ import javax.swing.*;
 public class HighScore extends JPanel{
     
     private int[] scores = new int[5];
-    private String fileName = "HighScores.txt";
+    private String fileName = "src/TextFiles/HighScores.txt";
     private JLabel score1;
     private JLabel score2;
     private JLabel score3;
@@ -28,7 +28,6 @@ public class HighScore extends JPanel{
     private JLabel score5;
     public HighScore()
     {
-        File file = new File(fileName);
         
         readFileIn();
         this.add(score1);
@@ -43,8 +42,9 @@ public class HighScore extends JPanel{
     {
          Scanner in = new Scanner(fileName);
         int counter = 0;
-        while(in.hasNextLine())
+        while(in.hasNextInt())
         {
+            
             scores[counter] = in.nextInt();
             counter++;
         }
