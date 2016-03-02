@@ -17,16 +17,17 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import javax.swing.JButton;
 
 /**
  *
  * @author Graham
  */
 public class MenuPanel extends JPanel implements ActionListener {
-    public javax.swing.JButton instructionsButton;
-    public javax.swing.JButton exitButton;
-    public javax.swing.JButton highScoresButton;
-    public javax.swing.JButton startButton;
+    private javax.swing.JButton instructionsButton;
+    private javax.swing.JButton exitButton;
+    private javax.swing.JButton highScoresButton;
+    private javax.swing.JButton startButton;
     private javax.swing.JLabel titleLabel;
     private Timer timer1;
     private Timer timerObstacle;
@@ -65,6 +66,23 @@ public class MenuPanel extends JPanel implements ActionListener {
         }
         
     }
+    
+    public JButton getStartButton(){
+        return this.startButton;
+    }
+    
+    public JButton getHighScoreButton(){
+        return this.highScoresButton;
+    }
+    
+    public JButton getExitButton(){
+        return this.exitButton;
+    }
+    
+    public JButton getInstructionsButton(){
+        return this.instructionsButton;
+    }
+
     
   private void initComponents() {
 

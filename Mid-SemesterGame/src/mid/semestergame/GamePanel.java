@@ -25,7 +25,7 @@ import java.util.ArrayList;
  */
 public class GamePanel extends JPanel implements ActionListener,KeyListener {
     private Timer timer1;
-    public Timer timerObstacle;
+    private Timer timerObstacle;
     private Skydiver player1;
     private ArrayList <Obstacle> obstacles;
     private ArrayList<Baby> babies;
@@ -181,6 +181,10 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
                
        }
        
+   }
+   
+   public Timer getTimer(){
+       return this.timerObstacle;
    }
 
 }

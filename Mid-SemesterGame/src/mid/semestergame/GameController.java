@@ -39,10 +39,10 @@ public class GameController implements ActionListener {
     }
     
     public void addMenuListeners(){
-        this.theMenuPanel.startButton.addActionListener(this);
-        this.theMenuPanel.highScoresButton.addActionListener(this);
-        this.theMenuPanel.instructionsButton.addActionListener(this);
-        this.theMenuPanel.exitButton.addActionListener(this);
+        this.theMenuPanel.getStartButton().addActionListener(this);
+        this.theMenuPanel.getHighScoreButton().addActionListener(this);
+        this.theMenuPanel.getInstructionsButton().addActionListener(this);
+        this.theMenuPanel.getExitButton().addActionListener(this);
         
     }
 
@@ -50,17 +50,17 @@ public class GameController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         
         Object o = e.getSource();
-        if(o==this.theMenuPanel.startButton){
+        if(o==this.theMenuPanel.getStartButton()){
             this.theFrame.remove(this.theMenuPanel);
             
             this.theFrame.add(this.thePanel);
             this.thePanel.setFocusable(true);
             this.thePanel.requestFocusInWindow();
             this.theFrame.revalidate(); 
-            thePanel.timerObstacle.start();
+            thePanel.getTimer().start();
         }
         
-        else if(o == this.theMenuPanel.highScoresButton){
+        else if(o == this.theMenuPanel.getHighScoreButton()){
             this.theFrame.remove(this.theMenuPanel);
             this.theFrame.add(this.hscore1);
             this.theFrame.revalidate();
