@@ -15,6 +15,7 @@ import java.awt.Rectangle;
 import Objects.*;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -168,8 +169,9 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
    public void gameOver(boolean gameOver){
        if(gameOver == true){
            try{
-           PrintWriter out = new PrintWriter("src/TextFiles/HighScores.txt");
+           PrintWriter out = new PrintWriter(new FileWriter("src/TextFiles/HighScores.txt", true));
             out.println(""+ this.score1);
+            out.flush();
             out.close();
            }
            
