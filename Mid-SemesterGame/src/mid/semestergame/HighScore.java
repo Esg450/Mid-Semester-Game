@@ -5,6 +5,8 @@
  */
 package mid.semestergame;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileReader;
 import java.io.PrintWriter;
@@ -27,6 +29,8 @@ public class HighScore extends JPanel{
     private JLabel score3;
     private JLabel score4;
     private JLabel score5;
+    private JButton btnBack;
+    private ActionListener ClickListener;
     public HighScore()
     {
         
@@ -42,8 +46,16 @@ public class HighScore extends JPanel{
         this.add(score3);
         this.add(score4);
         this.add(score5);
+        addButton();
         
         
+    }
+    private void addButton()
+    {
+        btnBack = new JButton("Go Back");
+        btnBack.setVisible(true);
+        this.add(btnBack);
+        //btnBack.addActionListener(ClickListener);
     }
     private void readFileIn()
     {
@@ -145,6 +157,7 @@ public class HighScore extends JPanel{
         return highestScores;
         
     }
+    
    
 }
 
