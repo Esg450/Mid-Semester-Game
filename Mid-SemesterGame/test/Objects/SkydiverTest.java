@@ -44,6 +44,8 @@ public class SkydiverTest {
     /**
      * Test of getX method, of class Skydiver.
      */
+    
+    
     @Test
     public void testGetX() {
         System.out.println("getX");
@@ -52,6 +54,8 @@ public class SkydiverTest {
         double result = instance.getX();
         assertEquals(expResult, result, 0.0);
     }
+    
+    
     
      @Test
     public void testMoveRight() {
@@ -64,6 +68,7 @@ public class SkydiverTest {
         assertEquals(20, result, 0.0);  
     }
     
+    
      @Test
     public void testMoveLeft() {
         System.out.println("move");
@@ -72,9 +77,10 @@ public class SkydiverTest {
         instance.setDx(-20);
         instance.move();
         double result = instance.getX();
-        assertEquals(-20, result, 0.0);  
+        assertEquals(-10, result, 0.0);  
     }
     
+   
      @Test
     public void testMoveZero() {
         System.out.println("move");
@@ -83,7 +89,8 @@ public class SkydiverTest {
         instance.setDx(0);
         instance.move();
         double result = instance.getX();
-        assertEquals(0, result, 0.0);  
+        assertEquals(10, result, 0.0);  
     }
+   
     
 }
