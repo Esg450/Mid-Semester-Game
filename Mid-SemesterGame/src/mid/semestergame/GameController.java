@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,7 +22,7 @@ public class GameController implements ActionListener{
     private GameFrame theFrame;
     private InstructionsPanel inst;
     private HighScore hscore1;
-    
+    private ArrayList <GamePanel> games;
     
     public GameController(){
         super();
@@ -29,10 +30,10 @@ public class GameController implements ActionListener{
         this.theFrame = new GameFrame("MidSemesterGame", this);
         
         this.theMenuPanel = new MenuPanel();
-        this.thePanel = new GamePanel(this);
+        //this.thePanel = new GamePanel(this);
         this.inst = new InstructionsPanel();
         this.hscore1 = new HighScore();
-        
+        games = new ArrayList <>();
         launchToMenuPanel();
         addMenuListeners();
         
@@ -56,12 +57,12 @@ public class GameController implements ActionListener{
     }
     
     public void returnToMenu(){
-        this.theFrame.remove(this.thePanel);
-            
+            this.theFrame.remove(games.get(games.size()-1));
             this.theFrame.add(this.theMenuPanel);
             this.theMenuPanel.setFocusable(true);
             this.theMenuPanel.requestFocusInWindow();
-            this.theFrame.revalidate(); 
+            this.theFrame.revalidate();
+            this.theFrame.repaint();
     }
     public GamePanel getGamePanel(){
         return this.thePanel;
@@ -74,13 +75,17 @@ public class GameController implements ActionListener{
         Object o = e.getSource();
         if(o==this.theMenuPanel.getStartButton()){
             this.theFrame.remove(this.theMenuPanel);
-            
-            this.theFrame.add(this.thePanel);
-            this.thePanel.setFocusable(true);
-            this.thePanel.requestFocusInWindow();
+            //this.theFrame.add(this.thePanel);
+            games.add(new GamePanel(this));
+            this.theFrame.add(games.get(games.size()-1));
             this.theFrame.revalidate(); 
             this.theFrame.repaint();
-            thePanel.getTimer().start();
+            this.games.get(games.size()-1).setFocusable(true);
+            this.games.get(games.size()-1).requestFocusInWindow();
+            this.games.get(games.size()-1).setGameOver(false);
+            this.games.get(games.size()-1).revalidate();
+            this.games.get(games.size()-1).repaint();
+            games.get(games.size()-1).getTimer().start();
         }
         
         else if(o == this.theMenuPanel.getHighScoreButton()){

@@ -60,7 +60,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
         score = new JLabel("Score: "+getScore());
         add(score);
         this.lowScore = 0;
-        
+       
         //Set static variables
         //Set list of images for the obstacle objects
         Obstacle.imageList.add("src/Images/plane1.png");
@@ -93,7 +93,8 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
            if (player1.intersects(obstacles.get(i).x - 15, obstacles.get(i).y + 10, obstacles.get(i).width, obstacles.get(i).height)) {
                timer1.stop();
                timerObstacle.stop();
-               this.gameOver(true);
+               gameOver=true;
+               this.gameOver(gameOver);
                
            }
            
@@ -184,13 +185,19 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
                 System.out.println("FileNotFound");
             }
            JOptionPane.showMessageDialog(null, "GAME OVER!\n Your score: " + getScore());
-            this.masterGameController.returnToMenu();
+           
+           this.masterGameController.returnToMenu();
+           this.timer1.stop();
        }
        
    }
    
    public Timer getTimer(){
        return this.timerObstacle;
+   }
+   
+   public void setGameOver(Boolean no){
+       this.gameOver=no;
    }
    
    
