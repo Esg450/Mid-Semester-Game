@@ -43,7 +43,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
         super();
         this.addKeyListener(this);
         background1 = new Background(500, 500, this); 
-        player1 = new Skydiver(500,500, this);
+        player1 = new Skydiver(500,500);
         GamePanel.timerCount =0;
         obstacles = new ArrayList <>();
         babies = new ArrayList <>();
@@ -186,5 +186,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
    public Timer getTimer(){
        return this.timerObstacle;
    }
+   
+   
 
 }

@@ -22,9 +22,9 @@ public class Skydiver extends Rectangle{
     private final int skydiverSpeed;
     private GamePanel panel1;
    
-    public Skydiver(int panelWidth, int panelHeight, GamePanel thePanel){
+    public Skydiver(int panelWidth, int panelHeight){
         this.skydiverImage = new ImageIcon("src/Images/skydiver.png").getImage();
-        this.panel1 = thePanel;
+        //this.panel1 = thePanel;
         this.size = new Dimension(panelWidth, panelHeight);
         this.skydiverSize = 50;
         this.skydiverSpeed = 10;
@@ -32,7 +32,7 @@ public class Skydiver extends Rectangle{
         
     }
 
-    private void move() {
+    public void move() {
         if(this.x >= size.width - skydiverSize) {
             
             this.x -= 10;
@@ -69,6 +69,14 @@ public class Skydiver extends Rectangle{
         move();
         g.setColor(Color.red);
         g.drawImage(skydiverImage, x, y, width, height, panel1);
+    }
+    
+    public double getX(){
+        return this.x;
+    }
+    
+    public void setDx(int dx){
+        this.x+=dx;
     }
  
 }

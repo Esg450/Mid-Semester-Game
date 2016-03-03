@@ -20,7 +20,7 @@ import javax.swing.*;
  */
 public class HighScore extends JPanel{
     
-    private int[] scores = new int[5];
+    private int[] scores = new int[100];
     private String fileName = "src/TextFiles/HighScores.txt";
     private JLabel score1;
     private JLabel score2;
@@ -31,11 +31,12 @@ public class HighScore extends JPanel{
     {
         
         readFileIn();
-        score1= new JLabel("1. " + scores[0]);
-        score2= new JLabel("2. " + scores[1]);
-        score3= new JLabel("3. " + scores[2]);
-        score4= new JLabel("4. " + scores[3]);
-        score5= new JLabel("5. " + scores[4]);
+        int [] scores2 = findHighestScores(scores);
+        score1= new JLabel("1. " + scores2[0]);
+        score2= new JLabel("2. " + scores2[1]);
+        score3= new JLabel("3. " + scores2[2]);
+        score4= new JLabel("4. " + scores2[3]);
+        score5= new JLabel("5. " + scores2[4]);
         this.add(score1);
         this.add(score2);
         this.add(score3);
@@ -98,6 +99,52 @@ public class HighScore extends JPanel{
         this.setVisible(true);
         
     }
-   
+    
+    public int [] findHighestScores(int [] scores){
+        int[] highestScores = new int [5];
+        int max = 0;
+        int max2 =0;
+        int max3 = 0;
+        int max4 =0;
+        int max5 = 0;
+        for(int j=0; j<scores.length; j++){
+            if(scores[j]>max){
+                max = scores[j]; 
+            } 
+        }   
+        
+        for(int i =0; i<scores.length; i++){
+            if(scores[i]>max2 && scores[i]<max){
+                max2 = scores[i];
+            }
+        }
+        
+        for(int i =0; i<scores.length; i++){
+            if(scores[i]>max3 && scores[i]<max2){
+                max3 = scores[i];
+            }
+        }
+        
+        for(int i =0; i<scores.length; i++){
+            if(scores[i]>max4 && scores[i]<max3){
+                max4 = scores[i];
+            }
+        }
+        for(int i =0; i<scores.length; i++){
+            if(scores[i]>max5 && scores[i]<max4){
+                max5 = scores[i];
+            }
+        }
+        
+        highestScores[0]=max;
+        highestScores[1] = max2;
+        highestScores[2] = max3;
+        highestScores[3] = max4;
+        highestScores[4] = max5;
+        
+        return highestScores;
+        
+    }
    
 }
+
