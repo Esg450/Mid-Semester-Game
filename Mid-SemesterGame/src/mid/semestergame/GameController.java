@@ -51,7 +51,8 @@ public class GameController implements ActionListener{
         this.theMenuPanel.getHighScoreButton().addActionListener(this);
         this.theMenuPanel.getInstructionsButton().addActionListener(this);
         this.theMenuPanel.getExitButton().addActionListener(this);
-        
+        this.hscore1.getBackBtn().addActionListener(this);
+        this.inst.getReturnButton().addActionListener(this);
     }
     
     public void returnToMenu(){
@@ -78,6 +79,7 @@ public class GameController implements ActionListener{
             this.thePanel.setFocusable(true);
             this.thePanel.requestFocusInWindow();
             this.theFrame.revalidate(); 
+            this.theFrame.repaint();
             thePanel.getTimer().start();
         }
         
@@ -85,8 +87,34 @@ public class GameController implements ActionListener{
             this.theFrame.remove(this.theMenuPanel);
             this.theFrame.add(this.hscore1);
             this.theFrame.revalidate();
+           this.theFrame.repaint();
             
+        }
         
+        else if(o == this.hscore1.getBackBtn()){
+            this.theFrame.remove(this.hscore1);
+            this.theFrame.add(this.theMenuPanel);
+            this.theFrame.revalidate();
+            this.theFrame.repaint();
+        }
+        
+        else if(o == this.theMenuPanel.getInstructionsButton()){
+            this.theFrame.remove(this.theMenuPanel);
+            this.theFrame.add(this.inst);
+            this.theFrame.revalidate();
+            this.theFrame.repaint();
+        }
+        
+        else if(o == this.inst.getReturnButton()){
+            this.theFrame.remove(this.inst);
+            this.theFrame.add(this.theMenuPanel);
+            this.theFrame.revalidate();
+            this.theFrame.repaint();
+            
+        }
+        
+        else if(o == this.theMenuPanel.getExitButton()){
+           System.exit(0);
         }
         
         

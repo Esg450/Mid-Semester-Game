@@ -158,6 +158,10 @@ public class HighScore extends JPanel{
         
     }
     
+    public JButton getBackBtn(){
+        return this.btnBack;
+    }
+    
    
 }
 

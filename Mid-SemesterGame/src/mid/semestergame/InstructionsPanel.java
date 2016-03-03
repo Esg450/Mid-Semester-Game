@@ -19,4 +19,8 @@ public class InstructionsPanel extends JPanel {
         return1 = new JButton("Return");
         add(return1);
     }
+    
+    public JButton getReturnButton(){
+        return this.return1;
+    }
 }

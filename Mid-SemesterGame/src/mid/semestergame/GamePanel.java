@@ -132,13 +132,13 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
     public void keyPressed (KeyEvent e){
        
             player1.keyPressed(e);
-            System.out.println("Pressed");
+            
         
     }
     
     public void keyReleased(KeyEvent e){
         player1.keyReleased(e);
-        System.out.println("Released");
+        
     }
     public int getScore(){
         return score1;
