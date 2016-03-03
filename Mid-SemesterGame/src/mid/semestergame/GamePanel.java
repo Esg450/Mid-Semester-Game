@@ -37,10 +37,12 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
     private Background background1;
     private JLabel score;
     private int lowScore;
-    private GameFrame masterGameFrame;
+    private GameController masterGameController;
     
-    GamePanel(){
+    
+    GamePanel(GameController theGameController){
         super();
+        this.masterGameController = theGameController;
         this.addKeyListener(this);
         background1 = new Background(500, 500, this); 
         player1 = new Skydiver(500,500);
@@ -92,6 +94,7 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
                timer1.stop();
                timerObstacle.stop();
                this.gameOver(true);
+               
            }
            
           
@@ -127,8 +130,10 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
     }
     
     public void keyPressed (KeyEvent e){
-        player1.keyPressed(e);
-        System.out.println("Pressed");
+       
+            player1.keyPressed(e);
+            System.out.println("Pressed");
+        
     }
     
     public void keyReleased(KeyEvent e){
@@ -168,17 +173,18 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
    
    public void gameOver(boolean gameOver){
        if(gameOver == true){
-           try{
-           PrintWriter out = new PrintWriter(new FileWriter("src/TextFiles/HighScores.txt", true));
-            out.println(""+ this.score1);
-            out.flush();
-            out.close();
-           }
-           
-           catch(Exception e){
-               System.out.println("FileNotFound");
-           }
-               
+            try{
+            PrintWriter out = new PrintWriter(new FileWriter("src/TextFiles/HighScores.txt", true));
+             out.println(""+ this.score1);
+             out.flush();
+             out.close();
+            }
+
+            catch(Exception e){
+                System.out.println("FileNotFound");
+            }
+           JOptionPane.showMessageDialog(null, "GAME OVER!\n Your score: " + getScore());
+            this.masterGameController.returnToMenu();
        }
        
    }

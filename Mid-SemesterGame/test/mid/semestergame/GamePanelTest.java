@@ -44,8 +44,8 @@ public class GamePanelTest {
     @Test
     public void testGetHighScoreWhenOldScoreIsHigher() {
         System.out.println("getHighScore");
-        
-        GamePanel instance = new GamePanel();
+        GameController gC = new GameController();
+        GamePanel instance = gC.getGamePanel();
         int oldScore = 12;
         int newScore = 11;
         int expResult = 12;
@@ -56,7 +56,8 @@ public class GamePanelTest {
     @Test
     public void testGetHighScoreWhenNewScoreIsHigher() {
         System.out.println("getHighScore");
-        GamePanel instance = new GamePanel();
+        GameController gC = new GameController();
+        GamePanel instance = gC.getGamePanel();
         int oldScore = 11;
         int newScore = 12;
         int expResult = 12;
@@ -67,7 +68,8 @@ public class GamePanelTest {
     @Test
     public void testGetScore() {
         System.out.println("getScore");
-        GamePanel instance = new GamePanel();
+        GameController gC = new GameController();
+        GamePanel instance = gC.getGamePanel();
         int expResult = 0;
         int result = instance.getScore();
         assertEquals(expResult, result);
@@ -79,7 +81,8 @@ public class GamePanelTest {
         System.out.println("getLowScore");
         int oldScore = 10;
         int newScore = 11;
-        GamePanel instance = new GamePanel();
+        GameController gC = new GameController();
+        GamePanel instance = gC.getGamePanel();
         int expResult = 10;
         int result = instance.getLowScore(oldScore, newScore);
         assertEquals(expResult, result);
@@ -90,7 +93,8 @@ public class GamePanelTest {
         System.out.println("getLowScore");
         int oldScore = 11;
         int newScore = 10;
-        GamePanel instance = new GamePanel();
+        GameController gC = new GameController();
+        GamePanel instance = gC.getGamePanel();
         int expResult = 10;
         int result = instance.getLowScore(oldScore, newScore);
         assertEquals(expResult, result);

@@ -7,12 +7,14 @@ package mid.semestergame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  *
  * @author Graham
  */
-public class GameController implements ActionListener {
+public class GameController implements ActionListener{
     private MainMenu theMenu;
     private MenuPanel theMenuPanel;
     private GamePanel thePanel;
@@ -20,12 +22,17 @@ public class GameController implements ActionListener {
     private InstructionsPanel inst;
     private HighScore hscore1;
     
+    
     public GameController(){
+        super();
+        
         this.theFrame = new GameFrame("MidSemesterGame", this);
+        
         this.theMenuPanel = new MenuPanel();
-        this.thePanel = new GamePanel();
+        this.thePanel = new GamePanel(this);
         this.inst = new InstructionsPanel();
         this.hscore1 = new HighScore();
+        
         launchToMenuPanel();
         addMenuListeners();
         
@@ -36,6 +43,7 @@ public class GameController implements ActionListener {
         this.theFrame.add(theMenuPanel);
         this.theFrame.setVisible(true);
         this.theFrame.setResizable(false);
+        
     }
     
     public void addMenuListeners(){
@@ -45,6 +53,19 @@ public class GameController implements ActionListener {
         this.theMenuPanel.getExitButton().addActionListener(this);
         
     }
+    
+    public void returnToMenu(){
+        this.theFrame.remove(this.thePanel);
+            
+            this.theFrame.add(this.theMenuPanel);
+            this.theMenuPanel.setFocusable(true);
+            this.theMenuPanel.requestFocusInWindow();
+            this.theFrame.revalidate(); 
+    }
+    public GamePanel getGamePanel(){
+        return this.thePanel;
+    }
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -64,8 +85,12 @@ public class GameController implements ActionListener {
             this.theFrame.remove(this.theMenuPanel);
             this.theFrame.add(this.hscore1);
             this.theFrame.revalidate();
-          
+            
         
         }
+        
+        
     }
+
+    
 }
