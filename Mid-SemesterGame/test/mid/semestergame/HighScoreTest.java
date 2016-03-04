@@ -95,5 +95,25 @@ public class HighScoreTest {
         assertArrayEquals(expResult, result);
       
     }
+    @Test
+    public void testFindHighestScoresMoreThanFiveValues() {
+        System.out.println("findHighestScores");
+        int[] scores = {2000, 200, 500, 800, 600,700, 400};
+        HighScore instance = new HighScore();  //Stll todo
+        int[] expResult = {2000, 800, 700, 600, 500};
+        int[] result = instance.findHighestScores(scores);
+        assertArrayEquals(expResult, result);
+      
+    }
+    @Test
+    public void testFindHighestScoresWhenEmpty() {
+        System.out.println("findHighestScores");
+        int[] scores = {0, 0, 0, 0, 0};  //Still todo
+        HighScore instance = new HighScore();
+        int[] expResult = {0, 0, 0, 0, 0};
+        int[] result = instance.findHighestScores(scores);
+        assertArrayEquals(expResult, result);
+      
+    }
     
 }
