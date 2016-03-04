@@ -91,6 +91,17 @@ public class SkydiverTest {
         double result = instance.getX();
         assertEquals(10, result, 0.0);  
     }
+    
+    @Test
+    public void testMoveToRightEdge() {
+        System.out.println("move");
+        Skydiver instance = new Skydiver(500,500);
+        double x = instance.getX();
+        instance.setDx(500);
+        instance.move();
+        double result = instance.getX();
+        assertEquals(490, result, 0.0);  
+    }
    
     
 }
