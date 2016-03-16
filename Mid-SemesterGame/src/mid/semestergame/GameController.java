@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+//GameController class refactored by Graham Ervin
+
 package mid.semestergame;
 
 import java.awt.event.ActionEvent;
@@ -26,25 +29,21 @@ public class GameController implements ActionListener{
     
     public GameController(){
         super();
-        
         this.theFrame = new GameFrame("MidSemesterGame", this);
-        
         this.theMenuPanel = new MenuPanel();
         //this.thePanel = new GamePanel(this);
         this.inst = new InstructionsPanel();
         this.hscore1 = new HighScore();
         games = new ArrayList <>();
+        games.add(new GamePanel(this));
         launchToMenuPanel();
-        addMenuListeners();
-        
-           
+        addMenuListeners();    
     }
     
     private void launchToMenuPanel(){
         this.theFrame.add(theMenuPanel);
         this.theFrame.setVisible(true);
-        this.theFrame.setResizable(false);
-        
+        this.theFrame.setResizable(false);  
     }
     
     public void addMenuListeners(){
@@ -57,73 +56,96 @@ public class GameController implements ActionListener{
     }
     
     public void returnToMenu(){
-            this.theFrame.remove(games.get(games.size()-1));
-            this.theFrame.add(this.theMenuPanel);
-            this.theMenuPanel.setFocusable(true);
-            this.theMenuPanel.requestFocusInWindow();
-            this.theFrame.revalidate();
-            this.theFrame.repaint();
+        this.theFrame.remove(games.get(games.size()-1));
+        this.theFrame.add(this.theMenuPanel);
+        this.theMenuPanel.setFocusable(true);
+        this.theMenuPanel.requestFocusInWindow();
+        this.theFrame.revalidate();
+        this.theFrame.repaint();
     }
+    
     public GamePanel getGamePanel(){
         return this.thePanel;
     }
     
-
+    //Extracted methods startButtonPressed, highScoreButtonPressed, backButtonPressed, instructionsButtonPressed, and returnButtonPressed to cleanup actionPreforemd class
+    //Methods extracted by: Graham Ervin
     @Override
     public void actionPerformed(ActionEvent e) {
         
         Object o = e.getSource();
         if(o==this.theMenuPanel.getStartButton()){
-            this.theFrame.remove(this.theMenuPanel);
-            //this.theFrame.add(this.thePanel);
-            games.add(new GamePanel(this));
-            this.theFrame.add(games.get(games.size()-1));
-            this.theFrame.revalidate(); 
-            this.theFrame.repaint();
-            this.games.get(games.size()-1).setFocusable(true);
-            this.games.get(games.size()-1).requestFocusInWindow();
-            this.games.get(games.size()-1).setGameOver(false);
-            this.games.get(games.size()-1).revalidate();
-            this.games.get(games.size()-1).repaint();
-            games.get(games.size()-1).getTimer().start();
+            startButtonPressed();
         }
         
         else if(o == this.theMenuPanel.getHighScoreButton()){
-            this.theFrame.remove(this.theMenuPanel);
-            this.theFrame.add(this.hscore1);
-            this.theFrame.revalidate();
-           this.theFrame.repaint();
-            
+           highScoreButtonPressed();
         }
         
         else if(o == this.hscore1.getBackBtn()){
-            this.theFrame.remove(this.hscore1);
-            this.theFrame.add(this.theMenuPanel);
-            this.theFrame.revalidate();
-            this.theFrame.repaint();
+            backButtonPressed();
         }
         
         else if(o == this.theMenuPanel.getInstructionsButton()){
-            this.theFrame.remove(this.theMenuPanel);
-            this.theFrame.add(this.inst);
-            this.theFrame.revalidate();
-            this.theFrame.repaint();
+            instructionsButtonPressed();
         }
         
         else if(o == this.inst.getReturnButton()){
-            this.theFrame.remove(this.inst);
-            this.theFrame.add(this.theMenuPanel);
-            this.theFrame.revalidate();
-            this.theFrame.repaint();
-            
+            returnButtonPressed(); 
         }
         
         else if(o == this.theMenuPanel.getExitButton()){
-           System.exit(0);
+            System.exit(0);
         }
-        
-        
+ 
     }
-
     
+    //Extracted method for the start button action preformed
+    public void startButtonPressed(){
+        this.theFrame.remove(this.theMenuPanel);
+        this.games.remove(0);
+        this.games.add(new GamePanel(this));
+        this.theFrame.add(games.get(0));
+        this.theFrame.revalidate(); 
+        this.theFrame.repaint();
+        this.games.get(0).setFocusable(true);
+        this.games.get(0).requestFocusInWindow();
+        this.games.get(0).setGameOver(false);
+        this.games.get(0).revalidate();
+        this.games.get(0).repaint();
+        games.get(0).getTimer().start();
+    }
+    
+    //Extracted method for the high score button action preformed
+    public void highScoreButtonPressed(){
+        this.theFrame.remove(this.theMenuPanel);
+        this.theFrame.add(this.hscore1);
+        this.theFrame.revalidate();
+        this.theFrame.repaint();  
+    }
+    
+    //Extracted method for the back button action preformed
+    public void backButtonPressed(){
+        this.theFrame.remove(this.hscore1);
+        this.theFrame.add(this.theMenuPanel);
+        this.theFrame.revalidate();
+        this.theFrame.repaint();
+    }
+    
+    //Extracted method for the instructions button action preformed
+    public void instructionsButtonPressed(){
+        this.theFrame.remove(this.theMenuPanel);
+        this.theFrame.add(this.inst);
+        this.theFrame.revalidate();
+        this.theFrame.repaint();
+    }
+    
+    //Extracted method for the return button action preformed
+    public void returnButtonPressed(){
+        this.theFrame.remove(this.inst);
+        this.theFrame.add(this.theMenuPanel);
+        this.theFrame.revalidate();
+        this.theFrame.repaint();
+    }
+  
 }
