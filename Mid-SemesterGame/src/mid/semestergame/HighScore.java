@@ -5,10 +5,8 @@
  */
 package mid.semestergame;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.Scanner;
 import javax.swing.*;
@@ -111,7 +109,8 @@ public class HighScore extends JPanel{
         this.setVisible(true);
         
     }
-    
+    //refactor findHighestScores method to get rid of repeating code
+    //Refactor done by Zack Lehmann 3/16/16
     public int [] findHighestScores(int [] scores){
         int[] highestScores = new int [5];
         int max = 0;
@@ -119,7 +118,7 @@ public class HighScore extends JPanel{
         int max3 = 0;
         int max4 =0;
         int max5 = 0;
-        for(int j=0; j<scores.length; j++){
+        for(int j=0; j < scores.length; j++){
             if(scores[j]>max){
                 max = scores[j]; 
             } 
@@ -148,7 +147,7 @@ public class HighScore extends JPanel{
             }
         }
         
-        highestScores[0]=max;
+        highestScores[0]= max;
         highestScores[1] = max2;
         highestScores[2] = max3;
         highestScores[3] = max4;

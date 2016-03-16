@@ -19,7 +19,7 @@ import mid.semestergame.GamePanel;
  * @author Zack
  */
 public class Baby extends Rectangle{
-    private int dy = 0;
+   
     private int babySpeed = 5;
     private int babySize = 10;
     private final Dimension size;
