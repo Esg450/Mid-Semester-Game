@@ -22,9 +22,15 @@ public class Obstacle extends Rectangle {
     private int dy;
     private final Dimension size;
     private Image obstacleImage;
-    private final int obstacleSize;
-    private final int obstacleSpeed;
     private GamePanel panel1;
+    
+    
+    //Constants
+    //Replaced magic number with symbolic constant
+    //Refactor done by Evan Gentis on 3/16/16
+    private static final int OBSTACLE_SIZE = 50;
+    private static final int OBSTACLE_SPEED = 7;
+    private static final int OBSTACLE_START_Y = 500;
     
     public static ArrayList<String> imageList = new ArrayList<String>();
     
@@ -33,11 +39,9 @@ public class Obstacle extends Rectangle {
         this.obstacleImage = this.getRandomImage();
         this.panel1 = panel1;
         this.size = new Dimension(panelWidth, panelHeight);
-        this.obstacleSize = 50;
-        this.obstacleSpeed = 7;
         double r = Math.random();
-        int random = (int)(r * panelWidth-50);
-        this.setBounds(random, 500, obstacleSize, obstacleSize);  
+        int random = (int)(r * panelWidth-OBSTACLE_SIZE);
+        this.setBounds(random, OBSTACLE_START_Y, OBSTACLE_SIZE, OBSTACLE_SIZE);  
       
     }
     
@@ -50,7 +54,6 @@ public class Obstacle extends Rectangle {
     
     public void paintComponent(Graphics g){
         move();
-        //g.setColor(Color.black);
         g.drawImage(obstacleImage, this.x, this.y, this.width, this.height,panel1);
     }
     
@@ -64,7 +67,6 @@ public class Obstacle extends Rectangle {
     
   
     public void move() {
-        this.y -= this.obstacleSpeed;
-        
+        this.y -= OBSTACLE_SPEED;
     }
 }

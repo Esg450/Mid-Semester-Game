@@ -17,6 +17,7 @@ import javax.swing.JPanel;
  *
  * @author Graham
  */
+
 public class Background extends Rectangle{
     private Image skyImage;
     private int dy;
@@ -24,11 +25,22 @@ public class Background extends Rectangle{
     private MenuPanel theMenuPanel;
     private final Dimension size;
     
+    //Constants
+    //Replaced magic number with symbolic constant
+    //Refactor done by Evan Gentis on 3/16/16
+    private static final int MENU_BG_Y_OFFSET1 = 338;
+    private static final int MENU_BG_Y_OFFSET2 = 676;
+    private static final int MENU_BG_WIDTH = 500;
+    private static final int MENU_BG_HEIGHT = 338;
+    private static final int MENU_WIDTH = 500;
+    private static final int MENU_HEIGHT = 500;
+    private static final int MENU_BG_SPEED = 2;
+    
     public Background(int panelHeight, int panelWidth, MenuPanel panel1){
         this.skyImage =new  ImageIcon("src/Images/SkyBackground1.jpg").getImage();
         this.theMenuPanel = panel1;
         this.size = new Dimension(panelWidth, panelHeight);
-        this.setBounds(x, y, 500, 500);
+        this.setBounds(x, y, MENU_WIDTH, MENU_HEIGHT);
     }
     
     
@@ -36,24 +48,24 @@ public class Background extends Rectangle{
         this.skyImage =new  ImageIcon("src/Images/SkyBackground1.jpg").getImage();
         this.thePanel = panel1;
         this.size = new Dimension(panelWidth, panelHeight);
-        this.setBounds(x, y, 500, 500);
+        this.setBounds(x, y, MENU_WIDTH, MENU_HEIGHT);
     }
     
     
     public void paintComponent(Graphics g){
        move();
-       g.drawImage(skyImage,this.x, this.y, 500, 338,thePanel);
-       g.drawImage(skyImage,this.x, this.y+338, 500, 338,thePanel);
-       g.drawImage(skyImage,this.x, this.y+676, 500, 338,thePanel);
+       g.drawImage(skyImage,this.x, this.y, MENU_BG_WIDTH, MENU_BG_HEIGHT,thePanel);
+       g.drawImage(skyImage,this.x, this.y+MENU_BG_Y_OFFSET1, MENU_BG_WIDTH, MENU_BG_HEIGHT,thePanel);
+       g.drawImage(skyImage,this.x, this.y+MENU_BG_Y_OFFSET2, MENU_BG_WIDTH, MENU_BG_HEIGHT,thePanel);
        
     }
     
     public void paintComponentMenu(Graphics g){
        move();
-       g.drawImage(skyImage,this.x, this.y, 500, 338,theMenuPanel);
-       g.drawImage(skyImage,this.x, this.y+338, 500, 338,theMenuPanel);
-       g.drawImage(skyImage,this.x, this.y+676, 500, 338,theMenuPanel);
-       
+       g.drawImage(skyImage,this.x, this.y, MENU_BG_WIDTH, MENU_BG_HEIGHT,theMenuPanel);
+       g.drawImage(skyImage,this.x, this.y+MENU_BG_Y_OFFSET1, MENU_BG_WIDTH, MENU_BG_HEIGHT,theMenuPanel);
+       g.drawImage(skyImage,this.x, this.y+MENU_BG_Y_OFFSET2, MENU_BG_WIDTH, MENU_BG_HEIGHT,theMenuPanel);
+
     }
     
     public double getCurrentX() {
@@ -66,13 +78,13 @@ public class Background extends Rectangle{
     
   
     public void move() {
-        if(this.y<= -338)
+        if(this.y<= -MENU_BG_HEIGHT)
         {
             this.y=0;
         }
         else
         {
-            this.y-=2;
+            this.y-=MENU_BG_SPEED;
         }
         
     }
