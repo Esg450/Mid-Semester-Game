@@ -37,11 +37,8 @@ public class MenuPanel extends JPanel implements ActionListener {
     private Background background1;
     
     MenuPanel(){
-        
         initComponents();
         background1 = new Background(500, 500, this); 
-        //GamePanel.timerCount =0;
-        //playerScore = 0;
         gameOver =false;
         timer1 = new Timer(50, this);
         timer1.start();
@@ -50,7 +47,6 @@ public class MenuPanel extends JPanel implements ActionListener {
     
     public void paintComponent(Graphics g){
        super.paintComponent(g);
-       
        g.clearRect(0, 0, this.getWidth(), this.getHeight());
        background1.paintComponentMenu(g);
     
@@ -58,13 +54,9 @@ public class MenuPanel extends JPanel implements ActionListener {
         
     public void actionPerformed(ActionEvent e){
         Object o = e.getSource();
-        
-
         if(o== timer1){
-            this.repaint();
-             
-        }
-        
+            this.repaint();  
+        } 
     }
     
     public JButton getStartButton(){
@@ -83,75 +75,79 @@ public class MenuPanel extends JPanel implements ActionListener {
         return this.instructionsButton;
     }
 
-    
-  private void initComponents() {
-
-        startButton = new javax.swing.JButton();
-        highScoresButton = new javax.swing.JButton();
-        instructionsButton = new javax.swing.JButton();
-        exitButton = new javax.swing.JButton();
-        titleLabel = new JLabel();
-        
-
-        startButton.setBackground(java.awt.SystemColor.text);
-        startButton.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
-        startButton.setText("Start Game");
-        
-
-        highScoresButton.setBackground(java.awt.SystemColor.text);
-        highScoresButton.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
-        highScoresButton.setText("High Scores");
-        
-
-        instructionsButton.setBackground(java.awt.SystemColor.text);
-        instructionsButton.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
-        instructionsButton.setText("Instructions");
-        
-
-        exitButton.setBackground(java.awt.SystemColor.text);
-        exitButton.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
-        exitButton.setText("Exit");
-        
-        
-        titleLabel.setFont(new java.awt.Font("OCR A Extended", 0, 18)); // NOI18N
-        titleLabel.setText("Xtreme Sky Diving Baby Rescue 10,000 ");
-
-        
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(titleLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(192, 192, 192)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(highScoresButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(startButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(instructionsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(47, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(titleLabel)
-                .addGap(117, 117, 117)
-                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(highScoresButton)
-                .addGap(18, 18, 18)
-                .addComponent(instructionsButton)
-                .addGap(18, 18, 18)
-                .addComponent(exitButton)
-                .addContainerGap(133, Short.MAX_VALUE))
-        );
+    //Created exteacted methods for create buttons and set button layout to clean up the initComponents class
+    //Methods extracted by: Graham Ervin
+    private void initComponents() {
+        createButtons();
+        setButtonLayout();
+    }   
   
-        validate();
-    }// </editor-fold>                       
+    public void createButtons(){
+      startButton = new JButton();
+      highScoresButton = new JButton();
+      instructionsButton = new JButton();
+      exitButton = new JButton();
+      titleLabel = new JLabel();
+
+      startButton.setBackground(java.awt.SystemColor.text);
+      startButton.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
+      startButton.setText("Start Game");
+
+
+      highScoresButton.setBackground(java.awt.SystemColor.text);
+      highScoresButton.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
+      highScoresButton.setText("High Scores");
+
+
+      instructionsButton.setBackground(java.awt.SystemColor.text);
+      instructionsButton.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
+      instructionsButton.setText("Instructions");
+
+
+      exitButton.setBackground(java.awt.SystemColor.text);
+      exitButton.setFont(new java.awt.Font("OCR A Extended", 0, 11)); // NOI18N
+      exitButton.setText("Exit");
+
+
+      titleLabel.setFont(new java.awt.Font("OCR A Extended", 0, 18)); // NOI18N
+      titleLabel.setText("Xtreme Sky Diving Baby Rescue 10,000 ");
+    }
+  
+    public void setButtonLayout(){
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+          this.setLayout(layout);
+          layout.setHorizontalGroup(
+              layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addGroup(layout.createSequentialGroup()
+                  .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                      .addGroup(layout.createSequentialGroup()
+                          .addGap(46, 46, 46)
+                          .addComponent(titleLabel))
+                      .addGroup(layout.createSequentialGroup()
+                          .addGap(192, 192, 192)
+                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                              .addComponent(highScoresButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                              .addComponent(startButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                              .addComponent(instructionsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                              .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                  .addContainerGap(47, Short.MAX_VALUE))
+          );
+          layout.setVerticalGroup(
+              layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                  .addGap(92, 92, 92)
+                  .addComponent(titleLabel)
+                  .addGap(117, 117, 117)
+                  .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                  .addGap(18, 18, 18)
+                  .addComponent(highScoresButton)
+                  .addGap(18, 18, 18)
+                  .addComponent(instructionsButton)
+                  .addGap(18, 18, 18)
+                  .addComponent(exitButton)
+                  .addContainerGap(133, Short.MAX_VALUE))
+          );
+
+          validate();
+    }
 }
