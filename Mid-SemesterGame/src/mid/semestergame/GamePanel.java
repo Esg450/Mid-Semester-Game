@@ -87,28 +87,37 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
        {
            babies.get(i).paintComponent(g);
        }
-       
-       
-       for(int i = 0; i<obstacles.size(); i++){
+     
+       checkObstacleIntersection();
+       checkBabyIntersection();   
+        
+    }
+    
+    //Took the obstacle intersection logic from the paint component method to simplify that method
+    //Refactor done by Matthew Tucker 3/16/15
+    
+    public void checkObstacleIntersection(){
+      for(int i = 0; i<obstacles.size(); i++){
            if (player1.intersects(obstacles.get(i).x - 15, obstacles.get(i).y + 10, obstacles.get(i).width, obstacles.get(i).height)) {
                timer1.stop();
                timerObstacle.stop();
                gameOver=true;
                this.gameOver(gameOver);
                
-           }
-           
-          
-       }
+           }  
+         }
+    }
+    
+    //Took the Baby intersection logic from the paint component method to simplify that method
+    //Refactor done by Matthew Tucker 3/16/15
+    
+    public void checkBabyIntersection(){
        for(int i = 0; i<babies.size(); i++){
            if(player1.intersects(babies.get(i))){
                score1+=100;
                babies.remove(i);
            }
-       }
-             
-       
-        
+       } 
     }
         
     public void actionPerformed(ActionEvent e){
