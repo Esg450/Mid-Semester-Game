@@ -39,6 +39,7 @@ public class HighScore extends JPanel{
         score3= new JLabel("3. " + scores2[2]);
         score4= new JLabel("4. " + scores2[3]);
         score5= new JLabel("5. " + scores2[4]);
+        update();
         this.add(score1);
         this.add(score2);
         this.add(score3);
@@ -46,6 +47,17 @@ public class HighScore extends JPanel{
         this.add(score5);
         addButton();
         
+        
+    }
+    public void update()
+    {
+        readFileIn();
+        int [] scores2 = findHighestScores(scores);
+        score1.setText("1. " + scores2[0]);
+        score2.setText("2. " + scores2[1]);
+        score3.setText("3. " + scores2[2]);
+        score4.setText("4. " + scores2[3]);
+        score5.setText("5. " + scores2[4]);
         
     }
     private void addButton()

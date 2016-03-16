@@ -119,6 +119,7 @@ public class GameController implements ActionListener{
     //Extracted method for the high score button action preformed
     public void highScoreButtonPressed(){
         this.theFrame.remove(this.theMenuPanel);
+        hscore1.update();
         this.theFrame.add(this.hscore1);
         this.theFrame.revalidate();
         this.theFrame.repaint();  
