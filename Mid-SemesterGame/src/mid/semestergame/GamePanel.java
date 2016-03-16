@@ -75,26 +75,18 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
     
     public void paintComponent(Graphics g){
        super.paintComponent(g);
-       
        g.clearRect(0, 0, this.getWidth(), this.getHeight());
        background1.paintComponent(g);
        player1.paintComponenet(g);
-       
-       for(int i = 0; i<obstacles.size(); i++){
-           obstacles.get(i).paintComponent(g);
-       }
-       for(int i =0; i <babies.size(); i++)
-       {
-           babies.get(i).paintComponent(g);
-       }
-     
+       paintObstacles(g);
+       paintBabies(g);
        checkObstacleIntersection();
        checkBabyIntersection();   
         
     }
     
-    //Took the obstacle intersection logic from the paint component method to simplify that method
-    //Refactor done by Matthew Tucker 3/16/15
+    //Took the obstacle intersection logic from the paint component method to simplify that method (Extract Method)
+    //Refactor done by Matthew Tucker 3/16/16
     
     public void checkObstacleIntersection(){
       for(int i = 0; i<obstacles.size(); i++){
@@ -108,8 +100,8 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
          }
     }
     
-    //Took the Baby intersection logic from the paint component method to simplify that method
-    //Refactor done by Matthew Tucker 3/16/15
+    //Took the Baby intersection logic from the paint component method to simplify that method (Extract method)
+    //Refactor done by Matthew Tucker 3/16/16
     
     public void checkBabyIntersection(){
        for(int i = 0; i<babies.size(); i++){
@@ -118,6 +110,26 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
                babies.remove(i);
            }
        } 
+    }
+    
+    //Took paint baby logic from the paint component method (Extract Method)
+    // Refactor done by Matthew Tucker 3/16/16
+    
+    public void paintBabies(Graphics g){
+      for(int i =0; i <babies.size(); i++)
+       {
+           babies.get(i).paintComponent(g);
+       }
+    }
+    
+    //Took paint Obstacles logic from the paint component method (Extract Method)
+    // Refactor done by Matthew Tucker 3/16/16
+    
+    public void paintObstacles(Graphics g){
+      for(int i = 0; i<obstacles.size(); i++)
+       {
+           obstacles.get(i).paintComponent(g);
+       }
     }
         
     public void actionPerformed(ActionEvent e){
@@ -159,27 +171,8 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener {
         this.score.setText( "Score: "+getScore());
     }
     
-   public int getHighScore(int oldScore, int newScore){
-       if(newScore>oldScore){
-           this.highScore = newScore;
-       }
-       
-       else{
-           this.highScore = oldScore;
-       }
-       return highScore;
-   }
-   
-   public int getLowScore(int oldScore, int newScore){
-       if(newScore<oldScore){
-           this.lowScore = newScore;
-       }
-       
-       else{
-           this.lowScore = oldScore;
-       }
-       return lowScore;
-   }
+   //Removed getHighScore() and getLowScore() methods because that logic is now handled in the HighScore Class
+   //Removed by Matt Tucker 3/16/16
    
    public void gameOver(boolean gameOver){
        if(gameOver == true){
