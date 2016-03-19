@@ -33,12 +33,7 @@ public class HighScore extends JPanel{
     {
         
         readFileIn();
-        int [] scores2 = findHighestScores(scores);
-        score1= new JLabel("1. " + scores2[0]);
-        score2= new JLabel("2. " + scores2[1]);
-        score3= new JLabel("3. " + scores2[2]);
-        score4= new JLabel("4. " + scores2[3]);
-        score5= new JLabel("5. " + scores2[4]);
+        setLabels();
         update();
         this.add(score1);
         this.add(score2);
@@ -59,6 +54,17 @@ public class HighScore extends JPanel{
         score4.setText("4. " + scores2[3]);
         score5.setText("5. " + scores2[4]);
         
+    }
+    //Move method refactoring from constructor
+    //refactoring done by Zack Lehmann
+    private void setLabels()
+    {
+        int [] scores2 = findHighestScores(scores);
+        score1= new JLabel("1. " + scores2[0]);
+        score2= new JLabel("2. " + scores2[1]);
+        score3= new JLabel("3. " + scores2[2]);
+        score4= new JLabel("4. " + scores2[3]);
+        score5= new JLabel("5. " + scores2[4]);
     }
     private void addButton()
     {
@@ -121,8 +127,7 @@ public class HighScore extends JPanel{
         this.setVisible(true);
         
     }
-    //refactor findHighestScores method to get rid of repeating code
-    //Refactor done by Zack Lehmann 3/16/16
+   
     public int [] findHighestScores(int [] scores){
         int[] highestScores = new int [5];
         int max = 0;

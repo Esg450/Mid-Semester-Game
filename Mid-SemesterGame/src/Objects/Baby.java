@@ -31,14 +31,21 @@ public class Baby extends Rectangle{
     public Baby(int panelHeight, int panelWidth, GamePanel panel1)
     {
         super.setLocation(x, y);
-        this.image = this.getRandomImage();
+        
         this.panel1 = panel1;
         this.size = new Dimension(panelWidth, panelHeight);
-        this.babySize = 30;
-        this.babySpeed = 7;
+        setBabyStats();
         double r = Math.random();
         int random = (int)(r * panelWidth - 20);
         this.setBounds(random, 500, babySize, babySize); 
+    }
+    //move method refactoring from the constructor
+    //refactoring done by Zack Lehmann
+    private void setBabyStats()
+    {
+        this.image = this.getRandomImage();
+        this.babySize = 30;
+        this.babySpeed = 7;
     }
     
     public Image getRandomImage() {
